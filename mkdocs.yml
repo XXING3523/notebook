@@ -1,9 +1,10 @@
 site_name: XING
-nav:
-  - Home:
-    - index.md 
-    - 数据结构: Home/Data_Structure
-    - 算法: Home/Algorithm
+use_directory_urls: false
+# nav:
+#   - Home:
+#     - index.md 
+#     - 数据结构: Home/Data_Structure
+#     - 算法: Home/Algorithm
 theme: 
   name: material
   font:
@@ -34,24 +35,59 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 markdown_extensions:
-  - pymdownx.arithmatex:
-      generic: true
-  - admonition
-  - codehilite
-  - toc:
-      permalink: true
+  - admonition                                      # 启用提示块（！！！语法）
+  - def_list                                        # 支持定义列表
+  - footnotes                                      # 支持脚注
+  - meta                                           # 读取 Markdown 元数据
+  - toc:                                           # 目录插件
+      permalink: ""                                # 标题增加目录链接锚点，无锚点显示
+      slugify: !!python/name:pymdownx.slugs.uslugify  # 自定义标题锚点格式化方式
+  - pymdownx.arithmatex:                           # 数学公式扩展
+      generic: true                               # 通用渲染模式，支持多环境
+  - pymdownx.caret                                  # 插入 ^ 弹出文本支持
+  - pymdownx.critic                                 # 编辑变更注释支持
+  - pymdownx.details                                # 折叠内容块
+  - pymdownx.emoji:                                 # Emoji 支持
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg  # 生成 svg 格式 Emoji
+  - pymdownx.highlight:                             # 代码语法高亮
+      linenums: true                               # 启用代码行号
+  - pymdownx.inlinehilite                            # 内联高亮
+  - pymdownx.keys                                   # 快捷键注释支持
+  - pymdownx.magiclink                              # 自动链接URL
+  - pymdownx.mark                                   # 标记文本支持
+  - pymdownx.snippets:                              # 代码片段支持
+      check_paths: true                            # 启用路径检查，防止引用错误
+  - pymdownx.progressbar                            # 进度条显示
+  - pymdownx.smartsymbols                           # 智能符号转换
+  - pymdownx.superfences:                           # 代码块扩展
+      custom_fences:
+        - name: math                               # 自定义名为 math 的代码块
+          class: arithmatex                        # 赋予 arithmatex 分类，方便渲染
+          format: !!python/name:pymdownx.arithmatex.fence_mathjax_format  # 格式化函数
+  - pymdownx.tasklist:                              # 任务列表支持
+      custom_checkbox: true                        # 启用自定义复选框样式
+  - pymdownx.tilde                                  # ~ 删除线支持
+  - pymdownx.tabbed:                                # 选项卡支持
+      alternate_style: true                        # 交替样式，即标签页样式不同，使更好区分
 
 extra_javascript:
   # 你可以用 MathJax CDN，也可以用KaTeX（这里演示MathJax）
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
-repo_url: https://github.com/squidfunk/mkdocs-material
-repo_name: squidfunk/mkdocs-material
+repo_url: https://github.com/XXING3523/notebook
+repo_name: XXING3523's notebook
 
 extra:
   generator: false
-  social:
-    - icon: fontawesome/brands/mastodon 
-      link: https://fosstodon.org/@squidfunk
+  # social:
+  #   - icon: fontawesome/brands/mastodon 
+  #     link: https://fosstodon.org/@squidfunk
 
-copyright: Copyright &copy; 2016 - 2020 Martin Donath
+# copyright: Copyright &copy; 2016 - 2020 Martin Donath
+
+extra_css:
+  - stylesheets/extra.css
+# plugins:
+# - toggle-sidebar:
+#     theme: material     # 插件 toggle-sidebar，配置为 Material 主题风格
+#     toggle_button: all 
