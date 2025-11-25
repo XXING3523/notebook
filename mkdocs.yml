@@ -1,0 +1,57 @@
+site_name: XING
+nav:
+  - Home:
+    - index.md 
+    - 数据结构: Home/Data_Structure
+    - 算法: Home/Algorithm
+theme: 
+  name: material
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.top
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    # 进展提示器
+    - navigation.instant
+    - navigation.instant.progress
+    
+  palette: 
+
+    # Palette toggle for light mode
+    - scheme: default
+      primary: black
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+
+extra_javascript:
+  # 你可以用 MathJax CDN，也可以用KaTeX（这里演示MathJax）
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+repo_url: https://github.com/squidfunk/mkdocs-material
+repo_name: squidfunk/mkdocs-material
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/mastodon 
+      link: https://fosstodon.org/@squidfunk
+
+copyright: Copyright &copy; 2016 - 2020 Martin Donath

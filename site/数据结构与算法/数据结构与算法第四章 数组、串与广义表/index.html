@@ -1,0 +1,1086 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E4%B8%8E%E5%AD%97%E5%85%B8/">
+      
+      
+        <link rel="next" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>数据结构与算法第四章 数组、串与广义表 - XING</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="XING" class="md-header__button md-logo" aria-label="XING" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            XING
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              数据结构与算法第四章 数组、串与广义表
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="XING" class="md-nav__button md-logo" aria-label="XING" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    XING
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to XING，Allright!
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdb%E6%80%8E%E4%B9%88%E4%B8%80%E6%AC%A1%E6%80%A7%E6%89%93%E5%8D%B0%E5%A4%9A%E4%B8%AA%E5%9C%B0%E5%9D%80%E7%9A%84%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gdb怎么一次性打印多个地址的数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据结构与算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A0%86%EF%BC%8C%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    堆，优先队列
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B9%B3%E8%A1%A1%E6%A0%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平衡树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第七章 搜索结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第三章 栈与队列
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%BA%BF%E6%80%A7%E8%A1%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第二章 线性表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第二章扩展知识
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E6%A0%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第五章 树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第八章 图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E4%B8%8E%E5%AD%97%E5%85%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第六章 集合与字典
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第四章 数组、串与广义表
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第四章 数组、串与广义表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ==画广义表简图（重点）==
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构期中复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A0%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    有关算法的部分知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    有关算法的部分知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%89%E5%85%B3%E7%AE%97%E6%B3%95%E7%9A%84%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86/%E7%BA%BF%E6%80%A7%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线性动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ==画广义表简图（重点）==
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>数据结构与算法第四章 数组、串与广义表</h1>
+
+<p>数据结构与算法第四章 数组、串与广义表</p>
+<hr />
+<p>一维数组与多维数组</p>
+<p>多维数组的每一个数据元素可以<strong>有多个直接前驱和多个直接后继（对于边界则会有相应的减少）</strong>。</p>
+<p>数组元素的下标一般<strong>具有固定的下界和上界</strong>。</p>
+<p>用<strong>一维内存</strong>来表示多维数组，就必须按某种次序将数组元素排列到一个序列中：<strong>行优先/列优先</strong> </p>
+<p>行优先存放：设数组开始存放位置 <span class="arithmatex"><span class="MathJax_Preview">LOC(0, 0) = a</span><script type="math/tex">LOC(0, 0) = a</script></span>, 每个元素占用l个存储单元,<span class="arithmatex"><span class="MathJax_Preview">LOC ( j, k ) = a + ( j * m + k ) * l</span><script type="math/tex">LOC ( j, k ) = a + ( j * m + k ) * l</script></span>（注意：要考虑第零行与第零列）；列优先存放：<span class="arithmatex"><span class="MathJax_Preview">LOC ( j, k ) = a + ( k * n + j ) * l</span><script type="math/tex">LOC ( j, k ) = a + ( k * n + j ) * l</script></span></p>
+<p>三维数组：各维（页/行/列）元素个数为<span class="arithmatex"><span class="MathJax_Preview">m_1,m_2,m_3</span><script type="math/tex">m_1,m_2,m_3</script></span>，下标为的数组元素存储地址：（按页／行／列存放）</p>
+<p>$LOC ( i1, i2, i3 ) = a +            ( i1<em> m2 * m3 + i2</em> m3 + i3 ) * l $</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>维数组同理。</p>
+<hr />
+<p>特殊矩阵（对称矩阵与三对角矩阵）</p>
+<p>对称矩阵中的元素关于主对角线对称</p>
+<p>为节约存储，只存对角线及对角线以上的元素，或者只存对角线或对角线以下的元素。前者称为<strong>上三角矩阵</strong>，后者称为<strong>下三角矩阵</strong>。</p>
+<p>对<span class="arithmatex"><span class="MathJax_Preview">a[i][j],i&gt;j</span><script type="math/tex">a[i][j],i>j</script></span>，为下三角矩阵，要计算其在一维数组中的存放位置只需罗列计算即可。<span class="arithmatex"><span class="MathJax_Preview">(i + 1)* i / 2 + j</span><script type="math/tex">(i + 1)* i / 2 + j</script></span></p>
+<p>若$ i &lt; j$，数组元素 $A[i][j] <span class="arithmatex"><span class="MathJax_Preview">在矩阵的上三角部分,在一维数组中没有存放，可以找它的对称元素</span><script type="math/tex">在矩阵的上三角部分,在一维数组中没有存放，可以找它的对称元素</script></span>A[j][i] = j *(j +1) / 2 + i $</p>
+<p>三对角矩阵</p>
+<p>$B=\left { a_{00},  a_{01},a_{10},a_{11},a_{12},a_{21},a_{22},a_{23},a_{32},   …  a_{n-1,n-2},a_{n-1,n-1} \right } $</p>
+<p>总共有<span class="arithmatex"><span class="MathJax_Preview">3n-2</span><script type="math/tex">3n-2</script></span>个非零元素。</p>
+<p>在三条对角线上的元素<span class="arithmatex"><span class="MathJax_Preview">a_{ij}</span><script type="math/tex">a_{ij}</script></span> 满足$ 0\le i\le n-1,i-1\le j\le i+1<span class="arithmatex"><span class="MathJax_Preview">,在一维数组B中</span><script type="math/tex">,在一维数组B中</script></span>A[i][j] $在第 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 行，它前面有 $3*i-1 $个非零元素, 在本行中第 $j <span class="arithmatex"><span class="MathJax_Preview">列前面有 <span class="arithmatex"><span class="MathJax_Preview">j-i+1</span><script type="math/tex">j-i+1</script></span> 个，所以元素 个，所以元素</span><script type="math/tex">列前面有 <span class="arithmatex"><span class="MathJax_Preview">j-i+1</span><script type="math/tex">j-i+1</script></span> 个，所以元素 个，所以元素</script></span>A[i][j] $在B中位置为 <span class="arithmatex"><span class="MathJax_Preview">k = 2*i + j</span><script type="math/tex">k = 2*i + j</script></span>。</p>
+<p>若已知三对角矩阵中某元素<span class="arithmatex"><span class="MathJax_Preview">A[i][j] <span class="arithmatex"><span class="MathJax_Preview">在数组 B[]存放于第</span><script type="math/tex">在数组 B[]存放于第</script></span>kk</span><script type="math/tex">A[i][j] <span class="arithmatex"><span class="MathJax_Preview">在数组 B[]存放于第</span><script type="math/tex">在数组 B[]存放于第</script></span>kk</script></span>个位置，则有<span class="arithmatex"><span class="MathJax_Preview">i = floor((k + 1) / 3) , j = k - 2 * i</span><script type="math/tex">i = floor((k + 1) / 3) , j = k - 2 * i</script></span></p>
+<hr />
+<p>稀疏矩阵</p>
+<p>矩阵中的元素个数远远小于矩阵元素的总数</p>
+<p>稀疏因子为衡量稀疏的标准，一般小于<span class="arithmatex"><span class="MathJax_Preview">0.05</span><script type="math/tex">0.05</script></span>称为稀疏矩阵。</p>
+<p>使用三元组<span class="arithmatex"><span class="MathJax_Preview">(i,j,a_{ij})</span><script type="math/tex">(i,j,a_{ij})</script></span>存储矩阵元素</p>
+<pre><code class="language-c++">const int drows = 6,  dcols = 7, dterms = 9;
+template&lt;class E&gt;
+struct Triple 
+{ //三元组
+     int row, col;//非零元素行号/列号
+     E value;//非零元素的值
+     void operator = (Triple&lt;E&gt;&amp; R)//赋值
+     { 
+         row = R.row;  
+         col = R.col;  
+         value = R.value; 
+     }
+};          
+
+template &lt;class E&gt;
+class SparseMatrix 
+{
+public: 
+     SparseMatrix (int Rw = drows, int Cl = dcols,int Tm = dterms);
+    //构造函数
+     void Transpose(SparseMatrix&lt;E&gt;&amp; b);//转置
+     void Add (SparseMatrix&lt;E&gt;&amp; a,SparseMatrix&lt;E&gt;&amp; b);//a = a+b 矩阵加法
+     void Multiply (SparseMatrix&lt;E&gt;&amp; a,SparseMatrix&lt;E&gt;&amp; b);//a = a*b 矩阵乘法
+pvivate:
+     int Rows, Cols, Terms;//行／列／非零元素数
+     Triple&lt;E&gt; *smArray;//三元组表
+};       
+
+template &lt;class E&gt;
+SparseMatrix&lt;E&gt;::SparseMatrix (int Rw, int Cl, int Tm) 
+{
+    Rows = Rw;   
+    Cols = Cl;  
+    Terms = Tm;
+    smArray = new Triple[Terms];//三元组表
+    if (smArray == NULL) 
+    {
+         cerr &lt;&lt; “存储分配失败！” &lt;&lt; endl;  exit(1);
+    }
+};  
+
+</code></pre>
+<p>在稀疏矩阵的三元组表中，非零矩阵元素按行存放。当行号相同时，按列号递增的顺序存放。</p>
+<p><strong>==（重点算法）稀疏矩阵的快速转置算法==</strong></p>
+<p>对原矩阵<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>扫描一遍，按<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>中每一元素的列号，立即确定在转置矩阵<span class="arithmatex"><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>三元组表中的位置，并装入它。</p>
+<p>建立辅助数组<span class="arithmatex"><span class="MathJax_Preview">rowSize</span><script type="math/tex">rowSize</script></span>和<span class="arithmatex"><span class="MathJax_Preview">rowStart</span><script type="math/tex">rowStart</script></span>：<span class="arithmatex"><span class="MathJax_Preview">rowSize</span><script type="math/tex">rowSize</script></span>记录矩阵转置前（矩阵<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>）各列，即转置矩阵<span class="arithmatex"><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>各行非零元素个数；<span class="arithmatex"><span class="MathJax_Preview">rowStart</span><script type="math/tex">rowStart</script></span>记录转置矩阵<span class="arithmatex"><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>各行非零元素在转置三元组表中开始存放位置。（只要根据前面累加即可<span class="arithmatex"><span class="MathJax_Preview">Rowstart_i = Rowstart_{i-1}+Rowsize_{i-1}</span><script type="math/tex">Rowstart_i = Rowstart_{i-1}+Rowsize_{i-1}</script></span>）</p>
+<pre><code class="language-c++">template &lt;class E&gt; 
+void SparseMatrix&lt;E&gt;::FastTranspos (SparseMatrix&lt;E&gt;&amp; B) {
+    int *rowSize = new int[Cols];//列元素数数组
+    int *rowStart = new int[Cols];//转置位置数组
+    B.Rows = Cols;
+    B.Cols = Rows;
+    B.Terms = Terms;
+    if (Terms &gt; 0) 
+    {
+        int i, j;
+        for (i = 0; i &lt; Cols; i++) rowSize[i] = 0;     
+        for (i = 0; i &lt; Terms; i++)
+                 rowSize[smArray[i].col]++;
+        rowStart[0] = 0;
+        for (i = 1; i &lt; Cols; i++)          
+            rowStart[i] = rowStart[i-1]+rowSize[i-1];
+        for (i = 0; i &lt; Terms; i++) 
+        {           
+            j = rowStart [smArray[i].col];
+            //因为矩阵A中的元素是按照行递增，行相同则列递增排列的，故第一个出现的列元素应当排在rowstart位置，而后逐渐递增。
+            B.smArray[j].row = smArray[i].col;
+            B.smArray[j].col = smArray[i].row;
+            B.smArray[j].value = smArray[i].value;
+            rowStart [smArray[i].col]++;        
+        }        
+    }    
+    delete [ ] rowSize;   
+    delete [ ] rowStart;
+}
+
+</code></pre>
+<hr />
+<p>字符串</p>
+<p>空串和空白串不同</p>
+<p>起始位置为0</p>
+<p>字符串重载操作</p>
+<pre><code class="language-c++">//串连接
+AString&amp; AString::operator += (const AString&amp; ob)
+{
+     char *temp = ch;//暂存原串数组
+     int n = curLength + ob.curLength;//串长度累加
+     int m = (maxSize &gt;= n) ? maxSize : n;//新空间大小
+     ch = new char[m];
+     if (ch == NULL) 
+     { 
+         cerr &lt;&lt; “存储分配错!\n ”; 
+         exit(1); 
+     }
+     maxSize = m;  curLength = n;
+     strcpy(ch, temp);//拷贝原串数组
+     strcat(ch, ob.ch);//连接ob串数组  
+     delete []temp;  
+     return this;
+};
+//串赋值，取第i个字符，判串相等/不等/空否/取子串
+
+</code></pre>
+<p>串的模式匹配</p>
+<pre><code class="language-c++">int AString::fastFind(AString&amp; pat, int k, 
+          int next[]) const {
+//从k开始寻找 pat 在 this 串中匹配的位置。若找到，函数返回 pat 在 this 串中开始位置，否则函数返回-1。数组next[ ] 存放 pat 的next[j] 值。
+     int posP = 0,  posT = k;//两个串的扫描指针
+     int lengthP = pat.curLength;//模式串长度
+     int lengthT = curLength;//目标串长度
+     while (posP &lt; lengthP &amp;&amp; posT &lt; lengthT)
+     {
+         if (posP == -1 || pat.ch[posP] == ch[posT]) 
+            { 
+                posP++;
+                posT++;
+            }//对应字符匹配
+         else posP = next[posP];   //求pat下趟比较位置
+         //为什么说next[0]=-1，当第一位没有匹配上时，必须P归零且T往后挪一位。
+     }
+     if (posP &lt; lengthP) return -1; //匹配失败
+     else return posT-lengthP;      //匹配成功
+};
+void AString::getNext(int next[]) 
+{
+     int j = 0, k = -1,lengthP = curLength;
+     next[0] = -1;
+     while (j &lt; lengthP)//计算next[j]
+     {
+         if ( k == -1 || ch[j] == ch[k]) 
+         {
+             j++;
+             k++;
+             next[j] = k;
+         }
+         else k = next[k];
+     }
+}; 
+
+//此算法的时间复杂度取决于 while 循环。由于是无回溯的算法，执行循环时，目标串字符比较有进无退，要么执行 posT 和 posP 进 1，要么查找next[ ] 数组进行模式位置的右移，然后继续向后比较。字符的比较次数最多为 O(lengthT)，不超过目标的长度。 
+</code></pre>
+<hr />
+<p>广义表</p>
+<p>为递归定义：允许有原子与子表</p>
+<p>表头：第一个表元素
+表尾：除表头外<strong>其他元素组成的表</strong></p>
+<p>==<strong>（重点）通过head与tail操作取出原子</strong>==</p>
+<p><strong>==在描述表头，表尾时如果出现嵌套询问，需按递归原则给出表及其子表的表头或表尾，并且要注意表尾定义，打上括号。==</strong>
+<strong>==在书写取元素时也要注意表尾定义的额外影响==</strong></p>
+<p>只包含原子的表退化为线性表
+<strong>==长度（要会求）==：原子/子表总个数</strong>
+<strong>==深度（要会求）==：以==表==为树结点，仿照树的深度，其中记线性表深度为1，例：((a,b),(),((((),c),d,e))的深度为4。对于递归表，深度记为无穷大。</strong>
+特点：有次序性，有长度，有深度，可递归，可共享。
+（空表，线性表，纯表==<strong>无共享无递归</strong>==，再入表，递归表）</p>
+<p>广义表的表示：链表</p>
+<h3 id="_1">==<strong>画广义表简图（重点）</strong>==</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">uytpe(0/1/2,表头，原子数据，子表)</th>
+<th style="text-align: center;">info（utype为0，存放引用计数，utype为1，存放数据值，utype为2，存放指向子表标头的指针）</th>
+<th style="text-align: center;">tlink（utype为0，指向该表的第一个结点，否则指向同一层下一个节点）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>广义表的复制路径
+广义表的深度计算</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

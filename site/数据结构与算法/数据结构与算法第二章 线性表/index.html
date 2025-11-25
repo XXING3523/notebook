@@ -1,0 +1,982 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/">
+      
+      
+        <link rel="next" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>数据结构与算法第二章 线性表 - XING</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="XING" class="md-header__button md-logo" aria-label="XING" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            XING
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              数据结构与算法第二章 线性表
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="XING" class="md-nav__button md-logo" aria-label="XING" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    XING
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to XING，Allright!
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdb%E6%80%8E%E4%B9%88%E4%B8%80%E6%AC%A1%E6%80%A7%E6%89%93%E5%8D%B0%E5%A4%9A%E4%B8%AA%E5%9C%B0%E5%9D%80%E7%9A%84%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gdb怎么一次性打印多个地址的数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据结构与算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A0%86%EF%BC%8C%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    堆，优先队列
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B9%B3%E8%A1%A1%E6%A0%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平衡树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第七章 搜索结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第三章 栈与队列
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第二章 线性表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第二章扩展知识
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E6%A0%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第五章 树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第八章 图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E4%B8%8E%E5%AD%97%E5%85%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第六章 集合与字典
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%95%B0%E7%BB%84%E3%80%81%E4%B8%B2%E4%B8%8E%E5%B9%BF%E4%B9%89%E8%A1%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第四章 数组、串与广义表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构期中复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A0%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    有关算法的部分知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    有关算法的部分知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%89%E5%85%B3%E7%AE%97%E6%B3%95%E7%9A%84%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86/%E7%BA%BF%E6%80%A7%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线性动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>数据结构与算法第二章 线性表</h1>
+
+<p>结点的变体（异质数据） </p>
+<p>顺序表：将线性表中的元素相继存放在一个连续的存储空间中</p>
+<p>特点：各表项的逻辑顺序与物理顺序一致，对各个表项可以顺序访问，也可以随机访问 </p>
+<p><strong>顺序表顺序查找/插入（插在某元素前方或末尾）/删除数据的平均比较/移动/移动次数（此时元素为<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>个）</strong></p>
+<p><strong>查找成功<span class="arithmatex"><span class="MathJax_Preview">\displaystyle \frac{n+1}{2}</span><script type="math/tex">\displaystyle \frac{n+1}{2}</script></span>,失败<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>,插入<span class="arithmatex"><span class="MathJax_Preview">\displaystyle \frac{n}{2}</span><script type="math/tex">\displaystyle \frac{n}{2}</script></span>,删除<span class="arithmatex"><span class="MathJax_Preview">\displaystyle \frac{n-1}{2}</span><script type="math/tex">\displaystyle \frac{n-1}{2}</script></span>。</strong></p>
+<p><strong>连续存储方式（顺序表）</strong></p>
+<p><strong>优点</strong>：存储利用率高（没有额外的指针开销，数据元素紧密排列，空间利用率高），存取速度快；<strong>缺点</strong>：插入、删除效率低，空间分配不灵活（需预先分配固定大小的空间，可能导致空间浪费（预分配过大）或溢出（预分配过小））</p>
+<p><strong>链式存储方式（链表）</strong></p>
+<p><strong>优点</strong>：适应表的动态增长和删除（链表的空间是动态申请和释放的，能有效利用存储空间，没有固定大小的限制，按需分配。）（可以很方便地扩充与收缩），结点可以不连续存储，插入和删除操作效率高；</p>
+<p><strong>缺点</strong>：存储密度低（需要额外的指针存储空间），存取效率低（只能从表头开始顺序访问元素，无法随机存取）</p>
+<hr />
+<p><strong>链表</strong></p>
+<p>链表类定义（复合方式）</p>
+<p>friend：友元类
+一个类A的友元类B中的所有成员函数都可以访问A中的成员变量，包括private</p>
+<p>链表类定义（嵌套方式）</p>
+<p>链表类定义（继承方式）</p>
+<p><strong>链表插入/删除节点：</strong></p>
+<p>记<code>first</code>为链表的第一个节点。</p>
+<p><strong>链表插入结点：</strong>
+最前端插入（插入非空表第一个结点前/插入空表）：
+<code>newnode-&gt;link=first//将新结点的指针指向当前第一个结点</code>
+<code>first=newnode//将新结点设为新结点</code></p>
+<p>中间/尾部插入（将<code>newnode</code>插入<code>current</code>与其后继间）
+<code>newnode-&gt;link=current-&gt;link//新结点的指针指向current后继</code>
+<code>current-&gt;link=newnode//current后继指向新结点</code></p>
+<p><strong>链表删除结点：</strong></p>
+<p>最前端删除：
+<code>del=first,del=first-&gt;link,delete del</code></p>
+<p>在链表中间或尾部删除（删除结点为current前驱）：
+<code>del=current-&gt;link;</code>current-&gt;link=del-&gt;link;delete del`
+//若记删除结点为current，不便处理</p>
+<p><strong>带表头结点（<code>first</code>仅表示表头，指向链表第一个结点，链表为空则指向<code>NULL</code>）的单链表</strong>：</p>
+<p>统一空表与非空表的操作，简化实现</p>
+<hr />
+<p><strong>循环链表（普通循环链表与带表头的循环链表）：</strong></p>
+<pre><code>带表头，初始时first-&gt;last=first
+否则first指向第一个结点。
+</code></pre>
+<pre><code class="language-c++">循环链表搜索算法
+template &lt;class E&gt; 
+CircListNode&lt;E&gt; * CircList&lt;E&gt;::Search( E x ) 
+{
+//在链表中从头搜索其数据值为 x 的结点
+     current = first-&gt;link;//第一个结点
+     while ( current != first &amp;&amp; current-&gt;data != x )  
+         current = current-&gt;link;
+     return current;
+}
+
+约瑟夫问题
+#include &lt;iostream.h&gt;
+#include “CircList.h”
+template &lt;class E&gt; 
+void Josephus(CircList&lt;E&gt;&amp; Js, int n, int m) 
+{
+     CircLinkNode&lt;E&gt; *p=Js.getHead(),*pre=NULL;
+     //p为第一个人
+     int i, j;
+     for(i=0;i&lt;n-1;i++) 
+     {     
+          for(j=1;j&lt;m;j++)
+          { 
+              pre=p;//pre指的是当前指向的人的前一个
+              p=p-&gt;link;
+          }
+          cout&lt;&lt;“出列的人是”&lt;&lt; p-&gt;data&lt;&lt;endl; 
+          pre-&gt;link=p-&gt;link;  
+          delete p;
+          p=pre-&gt;link;//由下一个人开始数
+      }
+};
+void main() 
+{       
+     CircList&lt;int&gt; clist;
+     int i,n,m;     
+     cout&lt;&lt;“输入游戏者人数和报数间隔:”;
+     cin&gt;&gt;n&gt;&gt;m;
+     for(i=1;i&lt;=n;i++) clist.insert(i,i);    
+     Josephus(clist,n,m);                 
+}
+
+
+</code></pre>
+<hr />
+<p><strong>双向链表</strong></p>
+<pre><code class="language-c++">带头节点的双向链表，起始时，first-&gt;left=first-&gt;right=first;
+搜索算法
+template &lt;class E&gt;
+DblNode&lt; E&gt; *DblList&lt;E&gt;::Search (E x, int d) 
+{//在双向循环链表中寻找其值等于x的结点。
+    DblNode&lt;E&gt; *current = (d == 0)?first-&gt;lLink:first-&gt;rLink;   
+    //按d确定搜索方向
+    while ( current != first &amp;&amp; current-&gt;data != x )    
+        current = (d == 0)? current-&gt;lLink : current-&gt;rLink;
+    if ( current != first ) return current;   
+    else return NULL;              
+};
+插入算法（在current后方）
+newnode-&gt;rLink=current-&gt;rLink;
+newnode-&gt;lLink=current;
+newnode-&gt;rLink-&gt;lLink=newnode;
+current-&gt;rLink=newnode;
+或Next=current-&gt;rLink来简化插入逻辑
+
+template &lt;class E&gt;
+bool DblList&lt;E&gt;::Insert ( int i, E x, int d ) 
+{
+//建立一个包含有值x的新结点, 并将其按d指定的方向插入到第i个结点之后。
+     DblNode&lt; E&gt; *current = Locate(i, d);//按d指示方向查找第i个结点
+     if ( current == NULL ) return false;//插入失败
+     DblNode&lt;E&gt; *newNd = new DblNode&lt;E&gt;(x);
+     if (d == 0) 
+     {//前驱方向:插在第i个结点左侧
+         newNd-&gt;lLink = current-&gt;lLink; 
+         current-&gt;lLink = newNd;
+         newNd-&gt;lLink-&gt;rLink = newNd;  
+         newNd-&gt;rLink = current;
+     } 
+     else 
+     {//后继方向:插在第i个结点后面
+         newNd-&gt;rLink = current-&gt;rLink;  
+         current-&gt;rLink = newNd;
+         newNd-&gt;rLink-&gt;lLink = newNd;   
+         newNd-&gt;lLink = current;
+     }
+    return true;//插入成功
+}; 
+
+删除算法
+current-&gt;rLink-&gt;lLink = current-&gt;lLink;        
+current-&gt;lLink-&gt;rLink = current-&gt;rLink;
+delete current;
+
+
+
+
+
+</code></pre>
+<p>static
+局部变量一般存在动态区域，全局变量存在静态区域
+此局部变量会存入静态区域，生命周期不随函数结束而消亡，是整个程序的全生命周期
+但是在函数外无法访问此变量
+若变量名已经存在，重新声明将失效</p>
+<hr />
+<p>静态链表</p>
+<p>为数组中每一个元素附加一个链接指针，就形成静态链表结构。</p>
+<p>静态链表每个结点由两个数据成员构成：data域存储数据，<strong>link域存放链接指针</strong>。</p>
+<p>处理时中<strong>可以不改变各元素的物理位置</strong>，只要<strong>重新链接就能改变这些元素的逻辑顺序</strong>。</p>
+<p>它是利用数组定义的，在整个运算过程中<strong>存储空间的大小不会变化</strong>。</p>
+<hr />
+<p>多项式的存储与相加（使用链表）</p>
+<p>使用线性表的缺点：插入和删除时项数可能有较大变化，因此要移动大量数据不利于多个多项式的同时处理</p>
+<p>使用链表的优点：多项式的项数可以动态地增长，不存在存储溢出问题。插入、删除方便，不移动元素</p>
+<p>三个变量：系数/指数/指针域</p>
+<p>按照升幂进行多项式相加：</p>
+<p>如果指数不相同，小者加入新链，相应指针向后挪，如果相同，相加，系数不为零则加入新链，同时两个指针向后挪</p>
+<p>当一条链结束后，另一条链上的元素顺次全部加入新链。</p>
+<p>例题：</p>
+<p>设一个链表最常用的操作是在末尾插入结点和删除尾结点，则选用(*)最节省时间。</p>
+<p>A. 单链表/B.单循环链表/C.带尾指针的单循环链表/D.带头结点的双循环链表</p>
+<p>关键在C/D判断，需要注意，<strong>删除某个结点需要找到其前驱</strong>，C明显找前驱效率低，故选D</p>
+<hr />
+<p>静态链表中指针表示的是<strong>数组下标</strong></p>
+<p>静态链表既有顺序存储的优点，又有动态链表的优点。所以，它存取表中第i个元素的时间与i无关<strong>（错）</strong>本质是链式结构，需要遍历。</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>
