@@ -19,6 +19,7 @@ theme:
     # 进展提示器
     - navigation.instant
     - navigation.instant.progress
+    - mathjax
     
   palette: 
     # Palette toggle for dark mode
