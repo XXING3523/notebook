@@ -1,6 +1,6 @@
 并查集
 
-<span style="color: #76EE00;">**【二分】【种类并查集】LuoguP1525**</span>
+<span style="color: #76EE00;">**【二分】【种类并查集】LuoguP1525 关押罪犯**</span>
 
 **【题目大意】**将$N$号人划分为2个集团，存在对敌对关系，每对关系包含三个信息，表示若划分到同一集团，将产生分数，对全体合理的划分方案，求产生分数最大值的最小值（若上述关系均未触发，结果为0）
 
@@ -12,9 +12,13 @@
 
 <span style="color: #76EE00;">**【种类并查集】LuoguP2024**</span>
 
+<span style="color: #76EE00;">**【二分】【并查集】LuoguP4047 部落划分**</span>
+
+
+
 <span style="color: #76EE00;">**【离散化】【种类并查集】LuoguP1955**</span>
 
-
+<span style="color: ORANGE;">**LuoguP1396 营救**</span>
 
 Kruskal重构树
 
@@ -36,7 +40,7 @@ Kruskal重构树
 
 以边的顺序为标准建立Kruskal重构树后，求出顶点$i,i+1$的LCA权值，要求$[L,R]$区域的最小$k$，只需快速求区间最大值，使用$ST$表，总时间复杂度$O(\max(n\log n,q,m))$
 
-<span style="color: #7ec0ee;">**【Kruskal重构树】LuoguP1967/P2245**</span>
+<span style="color: #7ec0ee;">**【Kruskal重构树】LuoguP1967/P2245 货车运输/星际导航**</span>
 
 无向图$|V|=n,|E|=m$，边权为$w_i$，给出$q$个询问，先判断$x,y$是否连通，连通则求出$x$到$y$所有可能路径中最小边权最大值。
 
@@ -44,4 +48,81 @@ Kruskal重构树
 
 方法一：直接套用Kruskal重构树；
 
-方法二：
+???success "<span style="color: #7ec0ee;">**LuoguP1967/P2245 货车运输**</span>参考解答一"
+	```
+	#include<bits/stdc++.h>
+    using namespace std;
+    const int N=1e5+5,M=1e6+5;
+    int n,m,q,root,tot;
+    int s[N],depth[N],fa[N][25],l[N],r[N],val[N];
+    struct edge{int x,y,w;}a[M];
+    bool cmp(edge x,edge y){return x.w>y.w;}
+    int find(int x)
+    {
+        if(x==s[x]) return x;
+        return s[x]=find(s[x]);
+    }
+    void getdepth(int x,int d)
+    {
+        depth[x]=d;
+        if(l[x]) getdepth(l[x],d+1);
+        if(r[x]) getdepth(r[x],d+1);
+    }
+    int lca(int x,int y)
+    {
+        if(depth[x]<depth[y]) swap(x,y);
+        for(int i=20;i>=1;i--)
+        {
+            if(depth[fa[x][i]]>=depth[y])
+                x=fa[x][i];
+        }
+        if(x==y) return x;
+        for(int i=20;i>=1;i--)
+        {
+            if(fa[x][i]!=fa[y][i])
+                x=fa[x][i],y=fa[y][i];
+        }
+        return fa[x][1];
+    }
+    int main()
+    {
+        scanf("%d%d",&n,&m);
+        tot=n;
+        for(int i=1;i<=2*n-1;i++) s[i]=i;
+        for(int i=1;i<=m;i++)
+        {
+            scanf("%d%d%d",&a[i].x,&a[i].y,&a[i].w);
+
+        }
+        sort(a+1,a+m+1,cmp);
+        for(int i=1;i<=m;i++)
+        {
+            int xx=find(a[i].x);
+            int yy=find(a[i].y);
+            if(xx==yy) continue;
+            tot++;
+            s[xx]=s[yy]=tot;
+            fa[xx][1]=fa[yy][1]=tot;
+            l[tot]=xx,r[tot]=yy;
+            val[tot]=a[i].w;
+        }
+        for(int i=1;i<=tot;i++)
+            if(fa[i][1]==0)
+                getdepth(i,0);
+        scanf("%d",&q);
+        int u,v;
+        for(int i=2;i<=20;i++)	
+            for(int j=1;j<=tot;j++)
+                fa[j][i]=fa[fa[j][i-1]][i-1];
+        for(int i=1;i<=q;i++)
+        {
+            scanf("%d%d",&u,&v);
+            if(find(u)!=find(v)) printf("-1\n");
+            else printf("%d\n",val[lca(u,v)]);
+        }
+        return 0;
+    }
+    ```
+
+方法二：使用朴素的倍增区间最大值、LCA
+

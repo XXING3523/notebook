@@ -21,8 +21,8 @@
 |     日期      |                     练琴                     |                     锻炼                     |                     开销                     |                     饮食                     | 作息 | 虚度 |                     喝水                     |
 | :-----------: | :------------------------------------------: | :------------------------------------------: | :------------------------------------------: | :------------------------------------------: | :--: | :--: | :------------------------------------------: |
 | 12月1日（一） | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**健身**</span> | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      | <span style="color: orange;">**Done**</span> |
-| 12月2日（二） |                                              |                                              | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      | <span style="color: orange;">**Done**</span> |
-| 12月4日（四） |                                              |                                              |                                              |                                              |      |      |                                              |
+| 12月2日（二） | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**健身**</span> | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      | <span style="color: orange;">**Done**</span> |
+| 12月4日（四） |                                              |                                              | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      |                                              |
 | 12月5日（五） |                                              |                                              |                                              |                                              |      |      |                                              |
 | 12月6日（六） |                                              |                                              |                                              |                                              |      |      |                                              |
 | 12月7日（日） |                                              |                                              |                                              |                                              |      |      |                                              |
@@ -87,7 +87,7 @@
 
 - [ ] 应当进行一次远足（COOL！！！）
 - [ ] 应当完成PA 4-1 实验报告（大概用时1小时30分钟）
-- [ ] 应当开始自学概率论与数理统计第八章内容（大概用时2个小时）
+- [x] 应当开始自学概率论与数理统计第八章内容（大概用时2个小时）
 
 12月7日：
 
@@ -97,9 +97,7 @@
 
 - [ ] 应当完成数字逻辑与计算机组成第六次实验报告（大概用时4~5个小时）
 
-- [ ] 截止12月7日，清除已完成题目中的30道题（清除即重新做一遍并充分掌握其方法，做好记录）（1/30）（大概用时12个小时）
-
-
+- [ ] 截止12月7日，清除已完成题目中的30道题（清除即重新做一遍并充分掌握其方法，做好记录）（13/30）（大概用时12个小时）
 
 12月8日：
 
