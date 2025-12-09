@@ -135,3 +135,15 @@ $R_2$向右移动直到$a_{R_2}\le a_i+C$不成立，现在判定$a_{R_1}=a_i+C,
         return 0;
     }
     ```
+
+
+
+deque 双端队列
+
+`deque<int> q`常用函数
+
+```
+q.push_back(x);q.push_front(x);
+q.pop_back(x);q.pop_front(x);
+```
+
