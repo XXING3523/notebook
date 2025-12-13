@@ -147,3 +147,34 @@ q.push_back(x);q.push_front(x);
 q.pop_back(x);q.pop_front(x);
 ```
 
+
+
+堆，优先队列
+
+```c++
+priority_queue <int,vector<int>,less<int> > p;
+//即priority_queue<int> q;队首为最大的，逐次递减 
+priority_queue <int,vector<int>,greater<int> > q;
+//队首为最小的，逐次增大。
+
+对于结构体的重载：
+struct node 
+{ 
+	int x,y; 
+	bool operator < (const node & a) const //重载运算符
+	{ 
+		return x<a.x; 
+		//关于k.x的队首最小，逐次增大的构造。
+	}
+}k; 
+priority_queue <node> q;
+q.push((node){X,Y});
+/*
+或者是：
+node temp;
+temp.x=X,temp.y=Y;
+q.push(temp);
+*/
+
+```
+

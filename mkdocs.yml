@@ -11,6 +11,7 @@ theme:
     text: Roboto
     code: Roboto Mono
   features:
+    - content.code.copy
     - navigation.top
     - navigation.tabs
     - navigation.tabs.sticky
@@ -36,6 +37,14 @@ theme:
         name: Switch to dark mode
 
 markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
   - admonition                                      # 启用提示块（！！！语法）
   - def_list                                        # 支持定义列表
   - footnotes                                      # 支持脚注
