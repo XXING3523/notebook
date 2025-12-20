@@ -1,10 +1,5 @@
 site_name: XING
 use_directory_urls: false
-# nav:
-#   - Home:
-#     - index.md 
-#     - 数据结构: Home/Data_Structure
-#     - 算法: Home/Algorithm
 theme: 
   name: material
   font:
