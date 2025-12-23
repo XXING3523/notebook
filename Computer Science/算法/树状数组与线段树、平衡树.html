@@ -1,0 +1,6908 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="%E6%95%B0%E8%AE%BA.html">
+      
+      
+        <link rel="next" href="%E6%A0%91%E8%AE%BA.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>树状数组与线段树、平衡树 - XING</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="XING" class="md-header__button md-logo" aria-label="XING" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            XING
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              树状数组与线段树、平衡树
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/XXING3523/notebook" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    XXING3523's notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to XING3523's note!
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Routine.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Routine
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../%E5%85%B6%E4%BD%99%E7%9F%A5%E8%AF%86/Linux%E5%AD%A6%E4%B9%A0.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Education/%E7%B4%A0%E6%9D%90.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Education
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../English/%E8%B4%9F%E9%87%8D%E7%9A%84%E7%89%B2%E5%8F%A3%20%E6%AF%9B%E5%A7%86.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  English
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="XING" class="md-nav__button md-logo" aria-label="XING" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    XING
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/XXING3523/notebook" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    XXING3523's notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to XING3523's note!
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Routine.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Routine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computer Science
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Computer Science
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    其余知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    其余知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B6%E4%BD%99%E7%9F%A5%E8%AF%86/Linux%E5%AD%A6%E4%B9%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B6%E4%BD%99%E7%9F%A5%E8%AF%86/Mkdocs%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mkdocs的相关配置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B6%E4%BD%99%E7%9F%A5%E8%AF%86/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    专业英语学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B6%E4%BD%99%E7%9F%A5%E8%AF%86/%E5%BC%A0%E8%83%9C%E8%AE%BA%E6%96%87%E7%A0%94%E7%A9%B6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privacy-Preserving Federated Neural Architecture Search With Enhanced Robustness for Edge Computing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B6%E4%BD%99%E7%9F%A5%E8%AF%86/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    联邦学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B6%E4%BD%99%E7%9F%A5%E8%AF%86/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    论文学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_7" id="__nav_3_1_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B6%E4%BD%99%E7%9F%A5%E8%AF%86/Linux/gdb%E6%80%8E%E4%B9%88%E4%B8%80%E6%AC%A1%E6%80%A7%E6%89%93%E5%8D%B0%E5%A4%9A%E4%B8%AA%E5%9C%B0%E5%9D%80%E7%9A%84%E6%95%B0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gdb怎么一次性打印多个地址的数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数字逻辑与计算机组成
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数字逻辑与计算机组成
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/%E6%95%B0%E7%94%B5%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数电第一章 二进制编码
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/%E6%95%B0%E7%94%B5%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数电第七章 指令系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/%E6%95%B0%E7%94%B5%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数电第三章 组合逻辑电路
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/%E6%95%B0%E7%94%B5%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数电第二章 数字逻辑基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/%E6%95%B0%E7%94%B5%E7%AC%AC%E4%BA%94%E7%AB%A0%20FPGA%E8%AE%BE%E8%AE%A1%E5%92%8C%E7%A1%AC%E4%BB%B6%E6%8F%8F%E8%BF%B0%E8%AF%AD%E8%A8%80%20.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数电第五章 FPGA设计和硬件描述语言 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/%E6%95%B0%E7%94%B5%E7%AC%AC%E5%85%AB%E7%AB%A0%20CPU.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数电第八章 CPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/%E6%95%B0%E7%94%B5%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E8%BF%90%E7%AE%97.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数电第六章 运算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/%E6%95%B0%E7%94%B5%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数电第四章 时序逻辑电路
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据结构
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8B%93%E5%B1%95%E7%9F%A5%E8%AF%86%EF%BC%9A%E6%A0%91.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    拓展知识：树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%84.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第七章 搜索结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第三章 栈与队列
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B9%9D%E7%AB%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第九章
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%BA%BF%E6%80%A7%E8%A1%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第二章 线性表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第二章扩展知识
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E6%A0%91.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第五章 树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%9B%BE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第八章 图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E4%B8%8E%E5%AD%97%E5%85%B8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第六章 集合与字典
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E5%8D%81%E7%AB%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第十章
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%95%B0%E7%BB%84%E3%80%81%E4%B8%B2%E4%B8%8E%E5%B9%BF%E4%B9%89%E8%A1%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法第四章 数组、串与广义表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构期中复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论与数理统计
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    概率论与数理统计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%AC%E4%B8%80%E7%AB%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论与数理统计第一章
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%AC%E4%B8%83%E7%AB%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论与数理统计第七章
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%AC%E4%B8%89%E7%AB%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论与数理统计第三章
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%AC%E4%BA%8C%E7%AB%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论与数理统计第二章
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%AC%E4%BA%94%E7%AB%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论与数理统计第五章
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%AC%E5%85%AB%E7%AB%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论与数理统计第八章
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%AC%E5%85%AD%E7%AB%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论与数理统计第六章
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%AC%E5%9B%9B%E7%AB%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论与数理统计第四章
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="STL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E4%BA%8C%E5%88%86.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E3%80%81%E5%B9%B3%E8%A1%A1%E6%A0%91.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二叉搜索树、平衡树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%80%8D%E5%A2%9E%E4%B8%8E%E5%88%86%E6%B2%BB.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    倍增与分治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%8C%BA%E9%97%B4%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%8E%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    区间动态规划与状态压缩动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常用技巧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%B9%B6%E6%9F%A5%E9%9B%86%E4%B8%8EKruskal%E9%87%8D%E6%9E%84%E6%A0%91.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    并查集与Kruskal重构树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E5%AD%A6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E8%AE%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E4%B8%8E%E7%BA%BF%E6%AE%B5%E6%A0%91%E3%80%81%E5%B9%B3%E8%A1%A1%E6%A0%91.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    树状数组与线段树、平衡树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%A0%91%E8%AE%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    树论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E7%BA%BF%E6%80%A7%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线性动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E7%BB%B4%E6%8A%A4%E4%B8%8E%E6%89%AB%E6%8F%8F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    维护与扫描
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%B4%AA%E5%BF%83.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    贪心
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_15" id="__nav_3_5_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    图
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%9B%BE/%E6%9C%80%E7%9F%AD%E8%B7%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最短路
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机系统基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机系统基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/PA%204%20%E4%B8%AD%E6%96%AD%E3%80%81%E5%BC%82%E5%B8%B8%E4%B8%8EIO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PA 4 中断、异常与IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Education
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Education
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Education/%E7%B4%A0%E6%9D%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    素材
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    小初人文教育
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    小初人文教育
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Education/%E5%B0%8F%E5%88%9D%E4%BA%BA%E6%96%87%E6%95%99%E8%82%B2/%E6%9C%80%E5%90%8E%E4%B8%80%E8%AF%BE%20%E9%83%91%E6%8C%AF%E9%93%8E.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最后一课 郑振铎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习材料
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习材料
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Education/%E5%B0%8F%E5%88%9D%E4%BA%BA%E6%96%87%E6%95%99%E8%82%B2/%E5%AD%A6%E4%B9%A0%E6%9D%90%E6%96%99/%E5%AD%A6%E4%B9%A0%E6%9D%90%E6%96%99%E4%B8%89.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习材料三
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Education/%E5%B0%8F%E5%88%9D%E4%BA%BA%E6%96%87%E6%95%99%E8%82%B2/%E5%AD%A6%E4%B9%A0%E6%9D%90%E6%96%99/%E5%AD%A6%E4%B9%A0%E6%9D%90%E6%96%99%E4%BA%8C.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习材料二
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    素材集
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    素材集
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Education/%E5%B0%8F%E5%88%9D%E4%BA%BA%E6%96%87%E6%95%99%E8%82%B2/%E7%B4%A0%E6%9D%90%E9%9B%86/%E4%BB%8E%E8%A5%BF%E8%8A%B1%E5%8E%85%E6%B5%B7%E6%A3%A0%E8%8A%B1%E5%BF%86%E8%B5%B7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从西花厅海棠花忆起
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Education/%E5%B0%8F%E5%88%9D%E4%BA%BA%E6%96%87%E6%95%99%E8%82%B2/%E7%B4%A0%E6%9D%90%E9%9B%86/%E7%94%B2%E7%94%B3%E4%B8%89%E7%99%BE%E5%B9%B4%E7%A5%AD.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    甲申三百年祭
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3_3" id="__nav_4_2_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人文
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    人文
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Education/%E5%B0%8F%E5%88%9D%E4%BA%BA%E6%96%87%E6%95%99%E8%82%B2/%E7%B4%A0%E6%9D%90%E9%9B%86/%E4%BA%BA%E6%96%87/%E6%98%86%E6%98%8E%E8%A5%BF%E5%8D%97%E8%81%94%E5%90%88%E5%A4%A7%E5%AD%A6%E6%A0%A1%E5%8F%8B%E4%BC%9A%E4%B8%BA%E6%AF%8D%E6%A0%A1%E9%81%AD%E5%8F%97%E6%9E%AA%E5%87%BB%E5%B1%A0%E6%9D%80%E6%83%A8%E6%A1%88%E6%95%AC%E5%91%8A%E5%85%A8%E5%9B%BD%E5%90%8C%E8%83%9E%E4%B9%A6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    昆明西南联合大学校友会为母校遭受枪击屠杀惨案敬告全国同胞书
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Education/%E5%B0%8F%E5%88%9D%E4%BA%BA%E6%96%87%E6%95%99%E8%82%B2/%E7%B4%A0%E6%9D%90%E9%9B%86/%E4%BA%BA%E6%96%87/%E8%AF%B4%E7%AC%91%20%E9%92%B1%E9%94%BA%E4%B9%A6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    说笑 钱锺书
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高中应试教育
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    高中应试教育
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Education/%E9%AB%98%E4%B8%AD%E5%BA%94%E8%AF%95%E6%95%99%E8%82%B2/%E5%87%BD%E6%95%B0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Education/%E9%AB%98%E4%B8%AD%E5%BA%94%E8%AF%95%E6%95%99%E8%82%B2/%E5%87%BD%E6%95%B0%EF%BC%88%E5%90%AB%E5%AF%BC%E6%95%B0%EF%BC%89.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    函数（含导数）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Education/%E9%AB%98%E4%B8%AD%E5%BA%94%E8%AF%95%E6%95%99%E8%82%B2/%E5%AE%B6%E6%95%99%E6%95%A3%E9%A2%98.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    家教散题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Education/%E9%AB%98%E4%B8%AD%E5%BA%94%E8%AF%95%E6%95%99%E8%82%B2/%E7%AB%8B%E4%BD%93%E5%87%A0%E4%BD%95.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    立体几何
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Education/%E9%AB%98%E4%B8%AD%E5%BA%94%E8%AF%95%E6%95%99%E8%82%B2/%E9%AB%98%E8%80%83%E5%BA%94%E8%AF%95%E6%95%B0%E5%AD%A6%E9%83%A8%E5%88%86%E5%88%86%E6%9E%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高考应试数学部分分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    English
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../English/%E8%B4%9F%E9%87%8D%E7%9A%84%E7%89%B2%E5%8F%A3%20%E6%AF%9B%E5%A7%86.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    负重的牲口 毛姆
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../English/%E8%B4%AB%E7%98%A0%E7%9A%84%E6%98%A5%E5%A4%A9%20%E8%B5%9B%E7%8F%8D%E7%8F%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    贫瘠的春天 赛珍珠
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    单词学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    单词学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../English/%E5%8D%95%E8%AF%8D%E5%AD%A6%E4%B9%A0/%E5%8D%95%E8%AF%8D%E5%AD%A6%E4%B9%A0%E4%B8%80.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    单词学习一
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>树状数组与线段树、平衡树</h1>
+
+<p><span style="color: orange;"><strong>【树状数组】CF2129B </strong></span></p>
+<p>【题目大意】给定大小为<span class="arithmatex">\(n\)</span>的排列<span class="arithmatex">\(P=\left \{ p_1,p_2,\cdots,p_n \right \}\)</span>，对排列<span class="arithmatex">\(A=\left \{  a_1,a_2,\cdots,a_n\right \}\)</span>，<span class="arithmatex">\(a_i\)</span>可取<span class="arithmatex">\(p_i\)</span>或<span class="arithmatex">\(2n-p_i\)</span>，求<span class="arithmatex">\(A\)</span>的一个合理构造，使<span class="arithmatex">\(A\)</span>中逆序对数量最少。</p>
+<p><span style="color: orange;"><strong>【树状数组】P1774 </strong></span></p>
+<p>【题目大意】对序列$A=\left {  a_1,a_2,\cdots,a_n\right } $，记交换相邻元素为一次操作，求使该序列变为不下降子序列的最小操作数。</p>
+<p>树状数组的单点修改，单点查询，区间修改，区间查询。</p>
+<p>树状数组对于”单点修改，区间查询“与”区间修改、单点查询“非常方便。</p>
+<details class="success">
+<summary><span style="color: orange;"><strong>【单点修改，区间查询】LuoguP3374 树状数组1 </strong></span>参考解答</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e6+5;
+int n,q;
+long long t[N];
+void add(int x,int k)
+{
+    while(x&lt;=n) t[x]+=k,x+=x&amp;(-x);
+}
+long long query(int x)
+{
+    long long ans=0;
+    while(x) ans+=t[x],x-=x&amp;(-x);
+    return ans;
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;q;
+    int op,x,y;
+    for(int i=1;i&lt;=n;i++)
+        cin&gt;&gt;x,add(i,x);
+    for(int i=1;i&lt;=q;i++)
+    {
+        cin&gt;&gt;op&gt;&gt;x&gt;&gt;y;
+        if(op==1) add(x,y);
+        else cout&lt;&lt;query(y)-query(x-1)&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<details class="success">
+<summary><span style="color: orange;"><strong>【区间修改，单点查询】LuoguP3368 树状数组2 </strong></span>参考解答</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e6+5;
+int n,a[N],t[N],q;
+void add(int x,long long k)
+{
+    while(x&lt;=n) t[x]+=k,x+=x&amp;(-x);
+}
+long long query(int x)
+{
+    long long res=0;
+    while(x) res+=t[x],x-=x&amp;(-x);
+    return res;
+}
+int main()
+{
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;q);
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
+    for(int i=1;i&lt;=n;i++) add(i,a[i]-a[i-1]);
+    for(int i=1;i&lt;=q;i++)
+    {
+        int op,l,r,x;
+        scanf(&quot;%d&quot;,&amp;op);
+        if(op==1)
+        {
+            scanf(&quot;%d%d%d&quot;,&amp;l,&amp;r,&amp;x);
+            add(l,x),add(r+1,-x);
+        }
+        else
+        {
+            scanf(&quot;%d&quot;,&amp;x);
+            printf(&quot;%d\n&quot;,query(x));
+        }
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #76ee00;"><strong>【树状数组】【排序】LuoguP10814 离线二维数点 </strong></span></p>
+<p><strong>【题目大意】</strong>给定长度为<span class="arithmatex">\(N\)</span>的序列，有<span class="arithmatex">\(q\)</span>个询问，每次询问给定<span class="arithmatex">\(L,R,x\)</span>，求区间<span class="arithmatex">\([L,R]\)</span>中小于等于<span class="arithmatex">\(x\)</span>的元素个数。</p>
+<p>实现1：</p>
+<details class="success">
+<summary><span style="color: #76ee00;"><strong>LuoguP10814 离线二维数点 </strong></span>参考实现1</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=2e6+5;
+int ans[N],n,q,a[N],t[N];
+struct node{int l,r,x,num;}b[N],c[N];
+bool cmp1(node x,node y){if(x.l!=y.l) return x.l&lt;y.l;}
+bool cmp2(node x,node y){if(x.r!=y.r) return x.r&lt;y.r;}
+void add(int x,int k)
+{while(x&lt;=n) t[x]+=k,x+=x&amp;(-x);}
+int query(int x)
+{
+    int res=0;
+    while(x) res+=t[x],x-=x&amp;(-x);
+    return res;
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;q;
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
+    for(int i=1;i&lt;=q;i++) 
+        scanf(&quot;%d%d%d&quot;,&amp;b[i].l,&amp;b[i].r,&amp;b[i].x),b[i].num=i;
+    for(int i=1;i&lt;=q;i++) c[i]=b[i];
+    sort(b+1,b+q+1,cmp1);
+    sort(c+1,c+q+1,cmp2);
+    int tot1=1,tot2=1;
+    for(int i=1;i&lt;=n;i++)
+    {
+        while(b[tot1].l==i) 
+            ans[b[tot1].num]-=query(b[tot1].x),tot1++;
+        add(a[i],1);
+        while(c[tot2].r==i) 
+            ans[c[tot2].num]+=query(c[tot2].x),tot2++;
+    }
+    for(int i=1;i&lt;=q;i++) printf(&quot;%d\n&quot;,ans[i]);
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #76ee00;"><strong>【树状数组】LuoguP6225 异或橙子 </strong></span></p>
+<p><strong>【题目大意】</strong>给定长度为<span class="arithmatex">\(N\)</span>的序列<span class="arithmatex">\(A\)</span>，要求支持以下操作：（1）修改<span class="arithmatex">\(a_i\)</span>为<span class="arithmatex">\(x\)</span>（2）求区间<span class="arithmatex">\([L,R]\)</span>的权值<span class="arithmatex">\(W_{[L,R]}\)</span>，权值<span class="arithmatex">\(W_{[L,R]}\)</span>定义为</p>
+<div class="arithmatex">\[W_{[L,R]}=\bigoplus\limits_{L\le i&lt;j\le R}\bigoplus\limits_{i\le k\le j}a_k\]</div>
+<details class="success">
+<summary>参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=2e5+5;
+int n,q,x,op,y;
+struct tree
+{
+    int t[4*N];
+    void add(int x,int k)
+    {while(x&lt;=n) t[x]^=k,x+=x&amp;(-x);}
+    int query(int x)
+    {
+        int res=0;
+        while(x) res^=t[x],x-=x&amp;(-x);
+        return res;
+    }
+}t1,t2;
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;q;
+    for(int i=1;i&lt;=n;i++)
+    {
+        scanf(&quot;%d&quot;,&amp;x);
+        if(i%2==1) t1.add(i/2+1,x);
+        else t2.add(i/2,x);
+    }
+    for(int i=1;i&lt;=q;i++)
+    {
+        scanf(&quot;%d%d%d&quot;,&amp;op,&amp;x,&amp;y);
+        if(op==1)
+        {
+            if(x%2==1) 
+            {
+                int posi=x/2+1;
+                t1.add(posi,y^(t1.query(posi)^t1.query(posi-1)));
+            }
+            else
+            {
+                int posi=x/2;
+                t2.add(posi,y^(t2.query(posi)^t2.query(posi-1)));
+            }
+        }
+        else
+        {
+            if((y-x+1)%2==0) printf(&quot;0\n&quot;);
+            else
+            {
+                if(x%2==1)
+                {
+                    int posi1=x/2+1,posi2=y/2+1;
+                    printf(&quot;%d\n&quot;,t1.query(posi2)^t1.query(posi1-1));
+                } 
+                else
+                {
+                    int posi1=x/2,posi2=y/2;
+                    printf(&quot;%d\n&quot;,t2.query(posi2)^t2.query(posi1-1));
+                }
+            }
+        }
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #76ee00;"><strong>【树状数组】【容斥原理】LuoguP3801 红色的幻想乡 </strong></span></p>
+<p>【题目大意】在<span class="arithmatex">\(n\cdot m\)</span>的方格阵中，某方格可以填入1，0两种数，初始全为0。要求支持以下操作：（1）选定<span class="arithmatex">\(x,y\)</span>，反转属于<span class="arithmatex">\(第x行\)</span>与<span class="arithmatex">\(第y列\)</span>的全体方格，（2）查询<span class="arithmatex">\(左上角为(x_1,y_1)，右下角为(x_2,y_2)\)</span>的区域内填数为1的方格数。</p>
+<p>关键在于维护被置为1的总行数与总列数，使用两个树状数组分别维护总行数与总列数，修改时若同一行/列被填数两次，则变为0。计数时，设<span class="arithmatex">\(p=query(x_2)-query(x_1-1),q=query(y_2)-query(y_1--1)\)</span>，结果为<span class="arithmatex">\((y_2-y_1+1)p+(x_2-x_1+1)q-2pq\)</span></p>
+<details class="success">
+<summary>参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e5+5;
+int l[N],c[N],n,m,q;
+struct tree
+{
+    int t[N],limit;
+    void add(int x,int k)
+    {while(x&lt;=limit) t[x]+=k,x+=x&amp;(-x);}
+    int query(int x)
+    {
+        int res=0;
+        while(x) res+=t[x],x-=x&amp;(-x);
+        return res;
+    }
+}t1,t2;
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;q;
+    t1.limit=n,t2.limit=m;
+    for(int i=1;i&lt;=q;i++)
+    {
+        int op,xs,xe,ys,ye;
+        scanf(&quot;%d&quot;,&amp;op);
+        if(op==1)
+        {
+            scanf(&quot;%d%d&quot;,&amp;xs,&amp;ys);
+            if(l[xs]) t1.add(xs,-1),l[xs]=0;
+            else t1.add(xs,1),l[xs]=1;
+            if(c[ys]) t2.add(ys,-1),c[ys]=0;
+            else t2.add(ys,1),c[ys]=1;
+        }
+        else
+        {
+            scanf(&quot;%d%d%d%d&quot;,&amp;xs,&amp;ys,&amp;xe,&amp;ye);
+            long long p=t1.query(xe)-t1.query(xs-1);
+            long long q=t2.query(ye)-t2.query(ys-1);
+            printf(&quot;%lld\n&quot;,(ye-ys+1)*p+(xe-xs+1)*q-2*p*q);
+        }
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #76ee00;"><strong>【树状数组】【二维偏序】LuoguP2717 寒假作业 </strong></span></p>
+<p><strong>【题目大意】</strong>给定长度为<span class="arithmatex">\(N\)</span>的序列，对区间<span class="arithmatex">\([L,R]\)</span>，若区间内的数的平均值<span class="arithmatex">\(\overline{X}\ge k\)</span>，则此区间被视为合法区间，求合法区间总数。</p>
+<details class="success">
+<summary>参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e5+5;
+long long ans,t[N*4];
+int n,k,a[N],h[N];
+void add(int x,long long k)
+{while(x&lt;=n) t[x]+=k,x+=x&amp;(-x);}
+long long query(int x)
+{
+    long long res=0;
+    while(x) res+=t[x],x-=x&amp;(-x);
+    return res;
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;k;
+    for(int i=1;i&lt;=n;i++) 
+        scanf(&quot;%d&quot;,&amp;a[i]),a[i]-=k;
+    for(int i=1;i&lt;=n;i++) a[i]+=a[i-1],h[i]=a[i];
+    sort(h+1,h+n+2);
+    int m=unique(h+1,h+n+2)-h-1;
+    for(int i=1;i&lt;=n+1;i++)
+        a[i]=lower_bound(h+1,h+m+1,a[i])-h;
+    add(a[n+1],1);
+    for(int i=1;i&lt;=n;i++)
+        ans+=query(a[i]),add(a[i],1);
+    cout&lt;&lt;ans;
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #7ec0ee;"><strong>【二维树状数组】LuoguP4054 计数问题 </strong></span></p>
+<p><strong>【题目大意】</strong>对<span class="arithmatex">\(n*m\)</span>的方格阵，初始数据<span class="arithmatex">\(a_{i,j}\)</span>表示<span class="arithmatex">\((i,j)\)</span>内填<span class="arithmatex">\(a_{i,j}颜色，共\)</span><span class="arithmatex">\(Q\)</span>个操作：（1）将<span class="arithmatex">\((i,j)\)</span>颜色变为<span class="arithmatex">\(x\)</span>；（2）询问<span class="arithmatex">\(左上角为(x_1,y_1),右下角为(x_2,y_2)\)</span>的区域内颜色为<span class="arithmatex">\(x\)</span>的方格数。<span class="arithmatex">\(1\le n,m\le 300,NUM_{color}\le 100\)</span></p>
+<p>类比一维树状数组，二维树状数组<span class="arithmatex">\(query(i,j)\)</span>表示<span class="arithmatex">\(左上角为(1,1),右下角为(i,j)\)</span>内全体<span class="arithmatex">\(t_{i,j}\)</span>的和。</p>
+<details class="success">
+<summary>参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n,m,q,p[305][305];
+struct tree
+{
+    int t[305][305];
+    void add(int x,int y,int k)
+    {
+        int temp=y;
+        while(x&lt;=n)
+        {
+            y=temp;
+            while(y&lt;=m) t[x][y]+=k,y+=y&amp;(-y);
+            x+=x&amp;(-x);
+        }
+    }
+    int query(int x,int y)
+    {
+        int temp=y,res=0;
+        while(x)
+        {
+            y=temp;
+            while(y) res+=t[x][y],y-=y&amp;(-y);
+            x-=x&amp;(-x);
+        }
+        return res;
+    }
+}a[105];
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=n;i++)
+        for(int j=1;j&lt;=m;j++)
+        {
+            scanf(&quot;%d&quot;,&amp;p[i][j]);
+            a[p[i][j]].add(i,j,1);
+        }
+    cin&gt;&gt;q;
+    for(int i=1;i&lt;=q;i++)
+    {
+        int xs,ys,xe,ye,x,op;
+        scanf(&quot;%d&quot;,&amp;op);
+        if(op==1)
+        {
+            scanf(&quot;%d%d%d&quot;,&amp;xs,&amp;ys,&amp;x);
+            a[p[xs][ys]].add(xs,ys,-1);
+            p[xs][ys]=x;
+            a[p[xs][ys]].add(xs,ys,1); 
+        }
+        else
+        {
+            scanf(&quot;%d%d%d%d%d&quot;,&amp;xs,&amp;xe,&amp;ys,&amp;ye,&amp;x);
+            printf(&quot;%d\n&quot;,a[x].query(xe,ye)-a[x].query(xe,ys-1)
+            -a[x].query(xs-1,ye)+a[x].query(xs-1,ys-1));
+        }
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #76ee00;"><strong>LuoguP3372 线段树1 </strong></span><strong>【题目大意】</strong>实现区间加修改与区间和查询。</p>
+<p>线段树的数据管理类似于二叉树。其维护的值为它的两棵子树内的所有元素做所选算子的值。</p>
+<p>在进行修改、查询时采用了分治的思想，以区间修改、区间查询，算子为加号作为例子：在修改<span class="arithmatex">\([L,R]\)</span>（给区间<span class="arithmatex">\([L,R]\)</span>中的每个元素加<span class="arithmatex">\(k\)</span>）时，设当前结点<span class="arithmatex">\(node\)</span>管辖的左右区间为<span class="arithmatex">\(L_0,R_0\)</span>，若<span class="arithmatex">\(L\le L_0,R\ge R_0\)</span>，则对<span class="arithmatex">\(T_{node.sum}\)</span>累加<span class="arithmatex">\((R_0-L_0+1)k\)</span>，并对懒标记<span class="arithmatex">\(T_{node.lazy}累加k\)</span></p>
+<details class="question">
+<summary>为什么需要懒标记？</summary>
+<p>每次更新如果将和区间所有有交集的子树根节点全部更新的话，时间开销是巨大的:<span class="arithmatex">\(O(n)\)</span>，懒标记是将更新值堆积的一种操作，在需要向儿子结点遍历时在一次性全部将之前为向下释放的更新信息合并释放，减小时间开销。举个例子，如果无懒标记，某次修改的区间包括了某子树<span class="arithmatex">\(T\)</span>，更新的时间复杂度是<span class="arithmatex">\(O(|T|)\)</span>,而添加懒标记会使得时间复杂度降为<span class="arithmatex">\(O(1)\)</span>并且保留了子树的更新信息。</p>
+</details>
+<details class="success">
+<summary><span style="color: #76ee00;"><strong>LuoguP3372 线段树1 </strong></span>线段树做法</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e5+5;
+struct tree{int l,r;long long sum,add;}t[N*4];
+long long a[N];
+int n,q;
+void build(int p,int l,int r)
+{
+    t[p].l=l,t[p].r=r;
+    if(l==r){t[p].sum=a[l];return;}
+    int mid=l+r&gt;&gt;1;
+    build(2*p,l,mid),build(2*p+1,mid+1,r);
+    t[p].sum=t[2*p].sum+t[2*p+1].sum;
+}
+void spread(int p)
+{
+    if(t[p].add)
+    {
+        t[2*p].add+=t[p].add;t[2*p+1].add+=t[p].add;
+        t[2*p].sum+=(t[2*p].r-t[2*p].l+1)*t[p].add;
+        t[2*p+1].sum+=(t[2*p+1].r-t[2*p+1].l+1)*t[p].add;
+        t[p].add=0;
+    }
+}
+void change(int p,int l,int r,long long k)
+{
+    if(t[p].l&gt;=l&amp;&amp;t[p].r&lt;=r)
+    {
+        t[p].sum+=(t[p].r-t[p].l+1)*k;
+        t[p].add+=k;return;
+    }
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(l&lt;=mid) change(2*p,l,r,k);
+    if(r&gt;mid) change(2*p+1,l,r,k);
+    t[p].sum=t[2*p].sum+t[2*p+1].sum;
+}
+long long query(int p,int l,int r)
+{
+    long long res=0;
+    if(t[p].l&gt;=l&amp;&amp;t[p].r&lt;=r) return t[p].sum;
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(l&lt;=mid) res+=query(2*p,l,r);
+    if(r&gt;mid) res+=query(2*p+1,l,r);
+    return res;
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;q;
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;a[i]);
+    build(1,1,n);
+    int op,l,r;long long k;
+    for(int i=1;i&lt;=q;i++)
+    {
+        scanf(&quot;%d&quot;,&amp;op);
+        if(op==1)
+        {
+            scanf(&quot;%d%d%lld&quot;,&amp;l,&amp;r,&amp;k);
+            change(1,l,r,k);
+        }
+        else
+        {
+            scanf(&quot;%d%d&quot;,&amp;l,&amp;r);
+            printf(&quot;%lld\n&quot;,query(1,l,r));
+        }
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<details class="success">
+<summary><span style="color: #76ee00;"><strong>LuoguP3372 线段树1 </strong></span>树状数组做法</summary>
+</details>
+<p><span style="color: #76ee00;"><strong>LuoguP3373 线段树2 </strong></span><strong>【题目大意】</strong>实现区间加修改、区间乘修改与区间和查询。</p>
+<p>本题需要两个懒标记<span class="arithmatex">\(T_{node.add},T_{node.mul}\)</span>，做加法时，只需<span class="arithmatex">\(T_{node.add}\)</span>累加<span class="arithmatex">\(k\)</span>，但在做乘法时，需要考虑更新三个变量的值<span class="arithmatex">\(T_{node.mul}*=k,T_{node.add}*=k\)</span>，在<span class="arithmatex">\(spread\)</span>处，<span class="arithmatex">\(T_{2*node/2*node+1.add}=T_{2*node/2*node+1.add}*T_{node.mul}+T_{node.add}\)</span></p>
+<p>因乘法同时作用于<span class="arithmatex">\(p\)</span>处的<span class="arithmatex">\(add\)</span>值，<span class="arithmatex">\(2p/2p+1\)</span>的尚未下放的<span class="arithmatex">\(add\)</span>值</p>
+<details class="success">
+<summary><span style="color: #76ee00;"><strong>LuoguP3373 线段树2 </strong></span>参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e5+5;
+struct tree{int l,r;long long sum,add,mul;}t[N*4];
+long long a[N],mod;
+int n,q;
+void build(int p,int l,int r)
+{
+    t[p].l=l,t[p].r=r,t[p].mul=1;
+    if(l==r){t[p].sum=a[l]%mod;return;}
+    int mid=l+r&gt;&gt;1;
+    build(2*p,l,mid),build(2*p+1,mid+1,r);
+    t[p].sum=(t[2*p].sum+t[2*p+1].sum)%mod;
+}
+void spread(int p)
+{
+    if(t[p].add||t[p].mul!=1)
+    {
+        t[2*p].add=t[2*p].add*t[p].mul%mod;
+        t[2*p+1].add=t[2*p+1].add*t[p].mul%mod;
+        t[2*p].add=(t[2*p].add+t[p].add)%mod;
+        t[2*p+1].add=(t[2*p+1].add+t[p].add)%mod;
+        t[2*p].mul=t[2*p].mul*t[p].mul%mod;
+        t[2*p+1].mul=t[2*p+1].mul*t[p].mul%mod;
+        t[2*p].sum=(t[2*p].sum*t[p].mul%mod+(t[2*p].r-t[2*p].l+1)*t[p].add)%mod;
+        t[2*p+1].sum=(t[2*p+1].sum*t[p].mul%mod+(t[2*p+1].r-t[2*p+1].l+1)*t[p].add)%mod;
+        t[p].add=0,t[p].mul=1;
+    }
+}
+void mul(int p,int l,int r,long long k)
+{
+    if(t[p].l&gt;=l&amp;&amp;t[p].r&lt;=r)
+    {
+        t[p].sum=t[p].sum*k%mod;
+        t[p].mul=t[p].mul*k%mod;
+        t[p].add=t[p].add*k%mod;return;
+    }
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(l&lt;=mid) mul(2*p,l,r,k);
+    if(r&gt;mid) mul(2*p+1,l,r,k);
+    t[p].sum=(t[2*p].sum+t[2*p+1].sum)%mod;
+}
+void add(int p,int l,int r,long long k)
+{
+    if(t[p].l&gt;=l&amp;&amp;t[p].r&lt;=r)
+    {
+        t[p].sum=(t[p].sum+(t[p].r-t[p].l+1)*k)%mod;
+        t[p].add=(t[p].add+k)%mod;return;
+    }
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(l&lt;=mid) add(2*p,l,r,k);
+    if(r&gt;mid) add(2*p+1,l,r,k);
+    t[p].sum=(t[2*p].sum+t[2*p+1].sum)%mod;
+}
+long long query(int p,int l,int r)
+{
+    long long res=0;
+    if(t[p].l&gt;=l&amp;&amp;t[p].r&lt;=r) 
+        return t[p].sum%mod;
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(l&lt;=mid) res=(res+query(2*p,l,r))%mod;
+    if(r&gt;mid) res=(res+query(2*p+1,l,r))%mod;
+    return res;
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;q&gt;&gt;mod;
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;a[i]);
+    build(1,1,n);
+    int op,l,r;long long k;
+    for(int i=1;i&lt;=q;i++)
+    {
+        scanf(&quot;%d&quot;,&amp;op);
+        if(op==1)
+        {
+            scanf(&quot;%d%d%lld&quot;,&amp;l,&amp;r,&amp;k);
+            mul(1,l,r,k);
+        }
+        else if(op==2)
+        {
+            scanf(&quot;%d%d%lld&quot;,&amp;l,&amp;r,&amp;k);
+            add(1,l,r,k);
+        }
+        else
+        {
+            scanf(&quot;%d%d&quot;,&amp;l,&amp;r);
+            printf(&quot;%lld\n&quot;,query(1,l,r));
+        }
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #76ee00;"><strong>LuoguP1253 区间完全修改嵌套 </strong></span><strong>【题目大意】</strong>实现区间完全修改、区间加与区间和查询。</p>
+<details class="success">
+<summary>参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e6+5;
+const long long INF=2e16;
+int n,q;long long a[N];
+struct node{int l,r;long long change,v,add;}t[4*N];
+void pushup(int p)
+{
+    t[p].v=max(t[2*p].v,t[2*p+1].v);
+}
+void build(int p,int l,int r)
+{
+    t[p].l=l,t[p].r=r,t[p].change=INF;
+    if(l==r){t[p].v=a[l];return;}
+    int mid=l+r&gt;&gt;1;
+    build(2*p,l,mid),build(2*p+1,mid+1,r);
+    pushup(p);
+}
+void spread(int p)
+{
+    if(t[p].add||t[p].change!=INF)
+    {
+        if(t[p].change!=INF) 
+        {
+            t[2*p].add=t[2*p+1].add=0;
+            t[2*p].v=t[2*p+1].v=t[p].change;
+            t[2*p].change=t[2*p+1].change=t[p].change;
+            t[p].change=INF;
+        }
+        else if(t[p].add)
+        {
+            if(t[2*p].change!=INF) t[2*p].change+=t[p].add;
+            else t[2*p].add+=t[p].add;
+            if(t[2*p+1].change!=INF) t[2*p+1].change+=t[p].add;
+            else t[2*p+1].add+=t[p].add;
+            t[2*p].v+=t[p].add;t[2*p+1].v+=t[p].add;
+            t[p].add=0;
+        }
+    }
+}
+void add(int p,int l,int r,long long k)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r)
+    {
+        t[p].v+=k;
+        if(t[p].change!=INF) t[p].change+=k;
+        else t[p].add+=k;return;
+    }
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(l&lt;=mid) add(2*p,l,r,k);
+    if(r&gt;mid) add(2*p+1,l,r,k);
+    pushup(p);
+}
+void change(int p,int l,int r,long long k)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r)
+    {
+        t[p].v=k;t[p].add=0,t[p].change=k;
+        return;
+    }
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(l&lt;=mid) change(2*p,l,r,k);
+    if(r&gt;mid) change(2*p+1,l,r,k);
+    pushup(p);
+}
+long long query(int p,int l,int r)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r) return t[p].v;
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;long long res=-2e16;
+    if(l&lt;=mid) res=max(res,query(2*p,l,r));
+    if(r&gt;mid) res=max(res,query(2*p+1,l,r));
+    return res;
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;q;
+    int op,l,r;long long x;
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;a[i]);
+    build(1,1,n);
+    for(int i=1;i&lt;=q;i++)
+    {
+        scanf(&quot;%d&quot;,&amp;op);
+        if(op==1)
+        {
+            scanf(&quot;%d%d%lld&quot;,&amp;l,&amp;r,&amp;x);
+            change(1,l,r,x);
+        }
+        else if(op==2)
+        {
+            scanf(&quot;%d%d%lld&quot;,&amp;l,&amp;r,&amp;x);
+            add(1,l,r,x);
+        }
+        else
+        {
+            scanf(&quot;%d%d&quot;,&amp;l,&amp;r);
+            printf(&quot;%lld\n&quot;,query(1,l,r));
+        }
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #76ee00;"><strong>【差分】【线段树】LuoguP1438 无聊的数列 </strong></span></p>
+<p><strong>【题目大意】</strong>要求支持以下操作：（1）区间<span class="arithmatex">\([L,R]\)</span>依次加上首项为<span class="arithmatex">\(K\)</span>，公差为<span class="arithmatex">\(D\)</span>的等差数列（2）单点查询</p>
+<p>构造<strong>差分序列</strong>即可，区间加采用<span class="arithmatex">\(add(L,L,K)\)</span>，<span class="arithmatex">\(add(L+1,R,D)\)</span>，<span class="arithmatex">\(add(R+1,R+1,-K-D(R-L))\)</span>。<strong>但应注意判断<span class="arithmatex">\(L+1,R+1\)</span>是否越界。</strong></p>
+<details class="success">
+<summary>参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=2e5+5;
+struct node{int l,r;long long sum,add;}t[8*N];
+long long a[N],b[N];
+int n,q,op;
+void spread(int p)
+{
+    if(t[p].add)
+    {
+        t[2*p].add+=t[p].add;
+        t[2*p+1].add+=t[p].add;
+        t[2*p].sum+=(t[2*p].r-t[2*p].l+1)*t[p].add;
+        t[2*p+1].sum+=(t[2*p+1].r-t[2*p+1].l+1)*t[p].add;
+        t[p].add=0;
+    }
+}
+void build(int p,int l,int r)
+{
+    t[p].l=l,t[p].r=r;
+    if(l==r){t[p].sum=b[l];return;}
+    int mid=l+r&gt;&gt;1;
+    build(2*p,l,mid),build(2*p+1,mid+1,r);
+    t[p].sum=t[2*p].sum+t[2*p+1].sum; 
+}
+void add(int p,int l,int r,long long k)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r)
+    {
+        t[p].add+=k;
+        t[p].sum+=(t[p].r-t[p].l+1)*k;
+        return;
+    }
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(l&lt;=mid) add(2*p,l,r,k);
+    if(r&gt;mid) add(2*p+1,l,r,k);
+    t[p].sum=t[2*p].sum+t[2*p+1].sum; 
+}
+long long query(int p,int l,int r)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r) return t[p].sum;
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    long long res=0;
+    if(l&lt;=mid) res+=query(2*p,l,r);
+    if(r&gt;mid) res+=query(2*p+1,l,r);
+    return res;
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;q;
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;a[i]);
+    for(int i=1;i&lt;=n;i++) b[i]=a[i]-a[i-1];
+    build(1,1,n);
+    for(int i=1;i&lt;=q;i++)
+    {
+        scanf(&quot;%d&quot;,&amp;op);
+        int l,r,x;long long k,d;
+        if(op==1)
+        {
+            scanf(&quot;%d%d%lld%lld&quot;,&amp;l,&amp;r,&amp;k,&amp;d);
+            add(1,l,l,k);
+            if(l+1&lt;=n) add(1,l+1,r,d);
+            if(r+1&lt;=n) add(1,r+1,r+1,-k-(r-l)*d);
+        }
+        else
+        {
+            scanf(&quot;%d&quot;,&amp;x);
+            printf(&quot;%lld\n&quot;,query(1,1,x));
+        }
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #76ee00;"><strong>【线段树】LuoguP3870 开关 </strong></span></p>
+<p><strong>【题目大意】</strong><span class="arithmatex">\(N\)</span>个灯排成一排，初始均为灭状态，要求支持以下操作：（1）将区间<span class="arithmatex">\([L,R]\)</span>的灯状态全部反转，（2）查询区间<span class="arithmatex">\([L,R]\)</span>内亮灯个数。</p>
+<details class="success">
+<summary>参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e5+5;
+int n,q;
+struct node{int l,r,sum,change;}t[4*N];
+void pushup(int p)
+{
+    t[p].sum=t[2*p].sum+t[2*p+1].sum;
+}
+void build(int p,int l,int r)
+{
+    t[p].l=l,t[p].r=r;
+    if(l==r) return;
+    int mid=l+r&gt;&gt;1;
+    build(2*p,l,mid),build(2*p+1,mid+1,r);
+}
+void spread(int p)
+{
+    if(t[p].change)
+    {
+        if(t[p].change&amp;1)
+        {
+            t[2*p].sum=(t[2*p].r-t[2*p].l+1)-t[2*p].sum;
+            t[2*p+1].sum=(t[2*p+1].r-t[2*p+1].l+1)-t[2*p+1].sum;
+        }
+        t[2*p].change+=t[p].change;
+        t[2*p+1].change+=t[p].change;
+        t[p].change=0;
+    }
+}
+void change(int p,int l,int r)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r)
+    {
+        t[p].sum=(t[p].r-t[p].l+1)-t[p].sum;
+        t[p].change++;return;
+    }
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(l&lt;=mid) change(2*p,l,r);
+    if(r&gt;mid) change(2*p+1,l,r);
+    pushup(p);
+}
+int query(int p,int l,int r)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r) return t[p].sum;
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1,res=0;
+    if(l&lt;=mid) res+=query(2*p,l,r);
+    if(r&gt;mid) res+=query(2*p+1,l,r);
+    return res;
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;q;
+    int op,l,r;
+    build(1,1,n);
+    for(int i=1;i&lt;=q;i++)
+    {
+        scanf(&quot;%d%d%d&quot;,&amp;op,&amp;l,&amp;r);
+        if(op==0) change(1,l,r);
+        else printf(&quot;%d\n&quot;,query(1,l,r));
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #76ee00;"><strong>【状态压缩】【线段树】LuoguP1558 色板游戏 </strong></span></p>
+<p><strong>【题目大意】</strong>对于长度为<span class="arithmatex">\(N\)</span>的色板，初始全涂满1号颜色，要求支持以下操作，对区间<span class="arithmatex">\([L,R]\)</span>涂上颜色<span class="arithmatex">\(k(1\le k\le 30)\)</span>（将覆盖掉之前的颜色），查询区间<span class="arithmatex">\([L,R]\)</span>的颜色种数。</p>
+<p>注意到颜色种数不超过30，可以使用状态压缩，用<span class="arithmatex">\(2^{k-1}\)</span>表示第<span class="arithmatex">\(k\)</span>种颜色，即对于二进制数<span class="arithmatex">\(A_{31}A_{30}\cdots A_2A_1A_0\)</span>，仅<span class="arithmatex">\(A_{k-1}\)</span>为为1，修改直接替换，合并做或运算即可，最后统计1的个数。</p>
+<details class="success">
+<summary>参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=2e5+5;
+int n,q,color;
+struct node{int l,r,change,sum;}t[N*4];
+void build(int p,int l,int r)
+{
+    t[p].l=l,t[p].r=r;
+    if(l==r){t[p].sum=1;return;}
+    int mid=l+r&gt;&gt;1;
+    build(2*p,l,mid),build(2*p+1,mid+1,r);
+    t[p].sum=t[2*p].sum|t[2*p+1].sum;
+}
+void spread(int p)
+{
+    if(t[p].change)
+    {
+        t[2*p].change=t[2*p].sum=t[p].change;
+        t[2*p+1].change=t[2*p+1].sum=t[p].change;
+        t[p].change=0;
+    }
+}
+void change(int p,int l,int r,int k)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r)
+    {
+        t[p].sum=k,t[p].change=k;
+        return;
+    }
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(l&lt;=mid) change(2*p,l,r,k);
+    if(r&gt;mid) change(2*p+1,l,r,k);
+    t[p].sum=t[2*p].sum|t[2*p+1].sum;
+}
+int query(int p,int l,int r)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r) return t[p].sum;
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1,res=0;
+    if(l&lt;=mid) res|=query(2*p,l,r);
+    if(r&gt;mid) res|=query(2*p+1,l,r);
+    return res;
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;color&gt;&gt;q;
+    build(1,1,n);
+    char op;int l,r,x;
+    for(int i=1;i&lt;=q;i++)
+    {
+        cin&gt;&gt;op;
+        if(op==&#39;C&#39;)
+        {
+            scanf(&quot;%d%d%d&quot;,&amp;l,&amp;r,&amp;x);
+            if(l&gt;r) swap(l,r); 
+            change(1,l,r,1&lt;&lt;(x-1));
+        }
+        else 
+        {
+            scanf(&quot;%d%d&quot;,&amp;l,&amp;r);
+            if(l&gt;r) swap(l,r);
+            int x=query(1,l,r),ans=0;
+            while(x)
+            {
+                if(x&amp;1) ans++;
+                x&gt;&gt;=1;
+            }
+            printf(&quot;%d\n&quot;,ans);
+        }
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #76ee00;"><strong>【动态规划】【树状数组】【线段树】LuoguP1637 三元上升子序列 </strong></span></p>
+<p><strong>【题目大意】</strong>对序列<span class="arithmatex">\(A=\left \{  a_1,a_2,\cdots,a_n\right \}\)</span>，求数对<span class="arithmatex">\((i,j,k),i&lt;j&lt;k,a_i&lt;a_j&lt;a_k\)</span>的个数。</p>
+<p><strong>树状数组做法1</strong>：将数据离散化。考虑每个数中间数<span class="arithmatex">\(a_j\)</span>的贡献，即求<span class="arithmatex">\(L=\left \{  a_i|a_i&lt;a_j,i\in[1,j-1]\right \}\)</span>，<span class="arithmatex">\(R=\left \{  a_k|a_k&gt;a_j,k\in[j+1,n]\right \}\)</span>，贡献为<span class="arithmatex">\(|L||R|\)</span>，时间复杂度为<span class="arithmatex">\(O(n\log n)\)</span></p>
+<p><strong>动态规划、树状数组优化做法</strong>（可拓展至<span class="arithmatex">\(M\)</span>元上升子序列计数）记<span class="arithmatex">\(dp_{i,j}\)</span>为以<span class="arithmatex">\(a_j\)</span>结尾，长度为<span class="arithmatex">\(i\)</span>的上升子序列个数。有转移方程：</p>
+<div class="arithmatex">\[\displaystyle dp_{i,j}=\sum_{k&lt;j,a_k&lt;a_j}dp_{i-1,k}\]</div>
+<p>暴力枚举的时间复杂度是<span class="arithmatex">\(O(n^2M)\)</span>，可以考虑树状数组优化。将数据离散化后，每次<span class="arithmatex">\(i\)</span>循环清空树状数组，<span class="arithmatex">\(dp_{i,j}=query(a_j-1)\)</span>，再<span class="arithmatex">\(add(a_j,dp_{i-1,j})\)</span>，这样就实现了快速转移，算法时间复杂度为<span class="arithmatex">\(O(nM\log n)\)</span>，<span class="arithmatex">\(dp\)</span>数组可滚动覆盖，故空间复杂度可降至<span class="arithmatex">\(O(n)\)</span>。</p>
+<p><strong>树状数组做法2</strong>：使用两个树状数组处理：第一个的<span class="arithmatex">\(query(i)\)</span>表示<span class="arithmatex">\(j&lt;i,a_j&lt;a_i\)</span>的个数，而以<span class="arithmatex">\(a_k\)</span>结尾的三元上升子序列个数为<span class="arithmatex">\(\displaystyle \sum_{1\le i&lt;k,a_i&lt;a_k}query(i)\)</span>。可考虑在计算完<span class="arithmatex">\(query(i)\)</span>后对第二个树状数组执行<span class="arithmatex">\(add(a_i,query(i))\)</span>。算法时间复杂度为<span class="arithmatex">\(O(n\log n)\)</span>，此方法或许也可扩展至<span class="arithmatex">\(M\)</span>元上升子序列，树状数组置为<span class="arithmatex">\(tr_{i,j}\)</span>或滚动覆盖。</p>
+<details class="success">
+<summary><span style="color: #76ee00;"><strong>LuoguP1637 三元上升子序列 </strong></span>树状数组做法1参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e5+5; 
+int a[N],h[N],t[N],l[N],r[N],n;
+long long ans;
+void add(int x,int k)
+{while(x&lt;=n) t[x]+=k,x+=x&amp;(-x);}
+int query(int x)
+{
+    int res=0;
+    while(x) res+=t[x],x-=x&amp;(-x);
+    return res;
+}
+int main()
+{
+    cin&gt;&gt;n;
+    for(int i=1;i&lt;=n;i++) cin&gt;&gt;a[i],h[i]=a[i];
+    sort(h+1,h+n+1);
+    int m=unique(h+1,h+n+1)-h;
+    for(int i=1;i&lt;=n;i++)
+        a[i]=lower_bound(h+1,h+m+1,a[i])-h;
+    for(int i=1;i&lt;=n;i++)
+    {
+        l[i]=query(a[i]-1);
+        add(a[i],1);
+    }
+    memset(t,0,sizeof(t));
+    for(int i=n;i&gt;=1;i--)
+    {
+        r[i]=n-i-query(a[i]);
+        add(a[i],1);
+    }
+    for(int i=1;i&lt;=n;i++) ans+=l[i]*r[i];
+    cout&lt;&lt;ans;
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<details class="success">
+<summary><span style="color: #76ee00;"><strong>LuoguP1637 三元上升子序列 </strong></span>动态规划参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e5+5;
+long long dp[4][N],t[4*N],ans;
+int a[N],h[N],n;
+void add(int x,long long k)
+{while(x&lt;=n) t[x]+=k,x+=x&amp;(-x);}
+long long query(int x)
+{
+    long long res=0;
+    while(x) res+=t[x],x-=x&amp;(-x);
+    return res;
+}
+int main()
+{
+    cin&gt;&gt;n;
+    for(int i=1;i&lt;=n;i++) 
+        scanf(&quot;%d&quot;,&amp;a[i]),h[i]=a[i];
+    sort(h+1,h+n+1);
+    int m=unique(h+1,h+n+1)-h;
+    for(int i=1;i&lt;=n;i++)
+        a[i]=lower_bound(h+1,h+m+1,a[i])-h;
+    for(int i=1;i&lt;=n;i++) dp[1][i]=1;
+    for(int i=2;i&lt;=3;i++)
+    {
+        memset(t,0,sizeof(t));
+        for(int j=1;j&lt;=n;j++)
+        {
+            dp[i][j]=query(a[j]-1);
+            add(a[j],dp[i-1][j]);
+        }
+    }
+    for(int i=1;i&lt;=n;i++) ans+=dp[3][i];
+    cout&lt;&lt;ans;
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<details class="success">
+<summary><span style="color: #76ee00;"><strong>LuoguP1637 三元上升子序列 </strong></span>树状数组做法2参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e5+5;
+long long dp[4][N],ans;
+int a[N],h[N],n;
+struct tree
+{
+    int t[4*N];
+    void add(int x,long long k)
+    {while(x&lt;=n) t[x]+=k,x+=x&amp;(-x);}
+    long long query(int x)
+    {
+        long long res=0;
+        while(x) res+=t[x],x-=x&amp;(-x);
+        return res;
+    }
+}t1,t2;
+int main()
+{
+    cin&gt;&gt;n;
+    for(int i=1;i&lt;=n;i++) 
+        scanf(&quot;%d&quot;,&amp;a[i]),h[i]=a[i];
+    sort(h+1,h+n+1);
+    int m=unique(h+1,h+n+1)-h;
+    for(int i=1;i&lt;=n;i++)
+        a[i]=lower_bound(h+1,h+m+1,a[i])-h;
+    for(int i=1;i&lt;=n;i++)
+    {
+        ans+=t2.query(a[i]-1);
+        long long temp=t1.query(a[i]-1);
+        t1.add(a[i],1),t2.add(a[i],temp);
+    }
+    cout&lt;&lt;ans;
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #7ec0ee;"><strong>【线段树】LuoguP4145 根号修改 </strong></span></p>
+<p><strong>【题目大意】</strong>实现以下操作：（1）对区间<span class="arithmatex">\([L,R]\)</span>内每个数开根号并向下取整（2）区间求和，注意：初始数<span class="arithmatex">\(a_i\in\mathbb{N_+},a_i\le 10^{12}\)</span></p>
+<p>需要注意到<span class="arithmatex">\(\sqrt{1}=1,10^{12}连续做6次开根号操作将得到1\)</span>,理论上需要做的开根号次数为<span class="arithmatex">\(O(n)\)</span>。此时需要维护区间最大值<span class="arithmatex">\(maxn\)</span>，若<span class="arithmatex">\(T_{p.maxn}=1\)</span>，则跳过此区间的开根号。此算法时间复杂度为<span class="arithmatex">\(O(n\log n)\)</span></p>
+<details class="success">
+<summary>参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e5+5;
+int n,q;
+long long a[N];
+struct node{int l,r;long long sum,maxn;}t[4*N];
+void pushup(int p)
+{
+    t[p].sum=t[2*p].sum+t[2*p+1].sum;
+    t[p].maxn=max(t[2*p].maxn,t[2*p+1].maxn);
+}
+void build(int p,int l,int r)
+{
+    t[p].l=l,t[p].r=r;
+    if(l==r){t[p].sum=t[p].maxn=a[l];return;}
+    int mid=l+r&gt;&gt;1;
+    build(2*p,l,mid),build(2*p+1,mid+1,r);
+    pushup(p); 
+}
+void change(int p,int l,int r)
+{
+    if(t[p].maxn==1) return;
+    else if(t[p].l==t[p].r)
+    {t[p].sum=sqrt(t[p].sum),t[p].maxn=sqrt(t[p].maxn);return;}
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(l&lt;=mid) change(2*p,l,r);
+    if(r&gt;mid) change(2*p+1,l,r);
+    pushup(p);
+}
+long long query(int p,int l,int r)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r) return t[p].sum;
+    int mid=t[p].l+t[p].r&gt;&gt;1;long long res=0;
+    if(l&lt;=mid) res+=query(2*p,l,r);
+    if(r&gt;mid) res+=query(2*p+1,l,r);
+    return res;
+}
+int main()
+{
+    cin&gt;&gt;n;
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;a[i]);
+    build(1,1,n);
+    cin&gt;&gt;q;
+    int op,l,r;
+    for(int i=1;i&lt;=q;i++)
+    {
+        scanf(&quot;%d%d%d&quot;,&amp;op,&amp;l,&amp;r);
+        if(l&gt;r) swap(l,r);
+        if(op==0) change(1,l,r);
+        else printf(&quot;%lld\n&quot;,query(1,l,r));
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #7ec0ee;"><strong>【线段树】LuoguP1471 方差 </strong></span></p>
+<p><strong>【题目大意】</strong>实现以下操作：（1）区间加（2）区间查询平均值（3）区间查询方差，方差定义为<span class="arithmatex">\(\displaystyle S^2=\frac{1}{n}\sum_{i=1}^{n}(X_i-\overline{X})^2\)</span></p>
+<p>只需实现区间和与区间平方和的维护即可。在做区间加<span class="arithmatex">\(k\)</span>操作时，有<span class="arithmatex">\(T_{p.square}=T_{p,square}+2kT_{p.sum}+(T_{p.r}-T_{p.l}+1)*k^2\)</span></p>
+<p>修改<span class="arithmatex">\(lazy\)</span>标记时同理。应当注意：区间平方和的修改依赖区间和，应当先更新区间平方和再更新区间和。</p>
+<details class="success">
+<summary>参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=2e5+5;
+int n,q;double a[N];
+struct node{int l,r;double sum,square,add;}t[4*N];
+void pushup(int p)
+{
+    t[p].sum=t[2*p].sum+t[2*p+1].sum;
+    t[p].square=t[2*p].square+t[2*p+1].square;
+}
+void build(int p,int l,int r)
+{
+    t[p].l=l,t[p].r=r;
+    if(l==r){t[p].sum=a[l],t[p].square=a[l]*a[l];return;}
+    int mid=l+r&gt;&gt;1;
+    build(2*p,l,mid),build(2*p+1,mid+1,r);
+    pushup(p);
+}
+void spread(int p)
+{
+    if(t[p].add!=0)
+    {
+        int len1=t[2*p].r-t[2*p].l+1;
+        int len2=t[2*p+1].r-t[2*p+1].l+1;
+        t[2*p].add+=t[p].add;
+        t[2*p+1].add+=t[p].add;
+        t[2*p].square+=2*t[p].add*t[2*p].sum+len1*t[p].add*t[p].add;
+        t[2*p+1].square+=2*t[p].add*t[2*p+1].sum+len2*t[p].add*t[p].add;
+        t[2*p].sum+=len1*t[p].add;
+        t[2*p+1].sum+=len2*t[p].add;
+        t[p].add=0;
+    }
+}
+void add(int p,int l,int r,double k)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r)
+    {
+        t[p].square+=2*k*t[p].sum+(t[p].r-t[p].l+1)*k*k;
+        t[p].sum+=(t[p].r-t[p].l+1)*k;
+        t[p].add+=k;
+        return;
+    }
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(l&lt;=mid) add(2*p,l,r,k);
+    if(r&gt;mid) add(2*p+1,l,r,k);
+    pushup(p);
+}
+double querysum(int p,int l,int r)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r) return t[p].sum;
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;double res=0;
+    if(l&lt;=mid) res+=querysum(2*p,l,r);
+    if(r&gt;mid) res+=querysum(2*p+1,l,r);
+    return res;
+}
+double querysquare(int p,int l,int r)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r) return t[p].square;
+    spread(p);
+    int mid=t[p].l+t[p].r&gt;&gt;1;double res=0;
+    if(l&lt;=mid) res+=querysquare(2*p,l,r);
+    if(r&gt;mid) res+=querysquare(2*p+1,l,r);
+    return res;
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;q;
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%lf&quot;,&amp;a[i]);
+    build(1,1,n);
+    int l,r,op;double k;
+    for(int i=1;i&lt;=q;i++)
+    {
+        scanf(&quot;%d&quot;,&amp;op);
+        if(op==1) 
+        {
+            scanf(&quot;%d%d%lf&quot;,&amp;l,&amp;r,&amp;k);
+            add(1,l,r,k);
+        }
+        else if(op==2)
+        {
+            scanf(&quot;%d%d&quot;,&amp;l,&amp;r);
+            printf(&quot;%.4lf\n&quot;,querysum(1,l,r)/(r-l+1));
+        }
+        else
+        {
+            scanf(&quot;%d%d&quot;,&amp;l,&amp;r);
+            double p=querysquare(1,l,r);
+            double q=querysum(1,l,r);
+            q=q*q/(r-l+1);
+            printf(&quot;%.4lf\n&quot;,(p-q)/(r-l+1));
+        }
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #7ec0ee;"><strong>【线段树】LuoguP4513 小白逛公园 </strong></span></p>
+<p><strong>【题目大意】</strong></p>
+<details class="success">
+<summary>参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=5e5+5;
+int n,q,a[N];
+struct tree{int l,r,maxn,lmax,rmax,sum;}t[4*N];
+void pushup(int p)
+{
+    t[p].sum=t[2*p].sum+t[2*p+1].sum;
+    t[p].lmax=max(t[2*p].lmax,t[2*p].sum+t[2*p+1].lmax);
+    t[p].rmax=max(t[2*p+1].rmax,t[2*p+1].sum+t[2*p].rmax);
+    t[p].maxn=max(max(t[2*p].maxn,t[2*p+1].maxn),t[2*p].rmax+t[2*p+1].lmax);
+}
+void build(int p,int l,int r)
+{
+    t[p].l=l,t[p].r=r;
+    if(l==r){t[p].maxn=t[p].lmax=t[p].rmax=t[p].sum=a[l];return;}
+    int mid=l+r&gt;&gt;1;
+    build(2*p,l,mid),build(2*p+1,mid+1,r);
+    pushup(p);
+}
+void change(int p,int x,int k)
+{
+    if(t[p].l==t[p].r)
+    {t[p].sum=t[p].lmax=t[p].rmax=t[p].maxn=k;return;}
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(x&lt;=mid) change(2*p,x,k);
+    else change(2*p+1,x,k);
+    pushup(p);
+}
+tree query(int p,int l,int r)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r) return t[p];
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(r&lt;=mid) return query(2*p,l,r);
+    else if(l&gt;mid) return query(2*p+1,l,r);
+    else
+    {
+        tree x=query(2*p,l,r),y=query(2*p+1,l,r);
+        tree temp;
+        temp.lmax=max(x.lmax,x.sum+y.lmax);
+        temp.rmax=max(y.rmax,y.sum+x.rmax);
+        temp.maxn=max(max(x.maxn,y.maxn),x.rmax+y.lmax);
+        return temp;
+    }
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;q;
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
+    build(1,1,n);
+    int op,x,y;
+    for(int i=1;i&lt;=q;i++)
+    {
+        scanf(&quot;%d%d%d&quot;,&amp;op,&amp;x,&amp;y);
+        if(op==1)
+        {
+            if(x&gt;y) swap(x,y);
+            printf(&quot;%d\n&quot;,query(1,x,y).maxn);
+        }
+        else change(1,x,y);
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #ff00ff;"><strong>【线段树】【Set/平衡树】【剪枝】CF19D Points</strong></span></p>
+<p><strong>【题目大意】</strong>对于坐标系<span class="arithmatex">\(xOy\)</span>，要求支持以下操作：（1）添加一个点<span class="arithmatex">\((x,y)\)</span>，保证添加前未出现此点；（2）删除一个点<span class="arithmatex">\((x,y)\)</span>，保证删除前存在此点；（3）查询所有横坐标大于<span class="arithmatex">\(x\)</span>，纵坐标大于<span class="arithmatex">\(y\)</span>的点，找出其中横坐标最小的点，若满足条件的点有多个，取纵坐标最小的点，否则报错。</p>
+<details class="success">
+<summary>参考实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=2e5+5;
+struct tree{int l,r,maxn;}t[4*N];
+set&lt;int&gt; s[N];
+int opt[N],x[N],y[N],h[N],n;
+void build(int p,int l,int r)
+{
+    t[p].l=l,t[p].r=r;
+    if(l==r){return;}
+    int mid=l+r&gt;&gt;1;
+    build(2*p,l,mid),build(2*p+1,mid+1,r);
+}
+void change(int p,int x,int k)
+{
+    if(t[p].l==t[p].r){t[p].maxn=k;return;}
+    int mid=t[p].l+t[p].r&gt;&gt;1;
+    if(x&lt;=mid) change(2*p,x,k);
+    else change(2*p+1,x,k);
+    t[p].maxn=max(t[2*p].maxn,t[2*p+1].maxn); 
+}
+int query(int p,int l,int r)
+{
+    if(l&lt;=t[p].l&amp;&amp;r&gt;=t[p].r) return t[p].maxn;
+    int res=0,mid=t[p].l+t[p].r&gt;&gt;1;
+    if(l&lt;=mid) res=max(res,query(2*p,l,r));
+    if(r&gt;mid) res=max(res,query(2*p+1,l,r));
+    return res;
+}
+int find(int p,int limit,int x)
+{
+    if(t[p].r&lt;limit||t[p].maxn&lt;=x) return -1;
+    if(t[p].l==t[p].r) return t[p].l;
+    int res=find(2*p,limit,x);
+    if(res!=-1) return res;
+    else return find(2*p+1,limit,x);
+} 
+int main()
+{
+    cin&gt;&gt;n;
+    string op;int p,q;
+    for(int i=1;i&lt;=n;i++)
+    {
+        cin&gt;&gt;op&gt;&gt;p&gt;&gt;q;
+        if(op==&quot;add&quot;) opt[i]=1;
+        else if(op==&quot;remove&quot;) opt[i]=2;
+        else opt[i]=3;
+        x[i]=p,y[i]=q,h[i]=x[i];
+    }
+    sort(h+1,h+n+1);
+    int m=unique(h+1,h+n+1)-h-1;
+    build(1,1,m);
+    for(int i=1;i&lt;=n;i++)
+        x[i]=lower_bound(h+1,h+m+1,x[i])-h;
+    for(int i=1;i&lt;=n;i++)
+    {
+        if(opt[i]==1)
+        {
+            s[x[i]].insert(y[i]);
+            if(query(1,x[i],x[i])&lt;y[i])
+                change(1,x[i],y[i]);
+        }
+        else if(opt[i]==2)
+        {
+            int temp=y[i];
+            s[x[i]].erase(s[x[i]].find(y[i]));
+            if(query(1,x[i],x[i])==temp)
+            {
+                if(s[x[i]].empty()) change(1,x[i],0);
+                else
+                {
+                    auto it=s[x[i]].end();it--;
+                    change(1,x[i],*it);
+                }
+            }   
+        }
+        else
+        {
+            int L=x[i],R=m;
+            if(query(1,x[i]+1,m)&lt;=y[i])
+            {printf(&quot;-1\n&quot;);continue;}
+            int temp=find(1,x[i]+1,y[i]);
+            auto ans=s[temp].upper_bound(y[i]);
+            printf(&quot;%d %d\n&quot;,h[temp],*ans);
+        }
+    }
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<p><span style="color: #7ec0ee;"><strong>【平衡树】LuoguP6136 普通平衡树（数据加强版）</strong></span></p>
+<p><strong>【题目大意】</strong>实现一种数据结构来维护可重集合<span class="arithmatex">\(M\)</span>，需要提供以下操作：</p>
+<p>（1）向<span class="arithmatex">\(M\)</span>中插入数<span class="arithmatex">\(x\)</span></p>
+<p>（2）从<span class="arithmatex">\(M\)</span>中删除一个数<span class="arithmatex">\(x\)</span>（若有多个相同的数，应只删除一个）</p>
+<p>（3）查询M中有多少个数比<span class="arithmatex">\(x\)</span>小，并将得到的答案加1（<span class="arithmatex">\(x\)</span>可能不存在于<span class="arithmatex">\(M\)</span>中）</p>
+<p>（4）查询如果将<span class="arithmatex">\(M\)</span>从小到大排列后，排名位于第<span class="arithmatex">\(x\)</span>位的数</p>
+<p>（5）求<span class="arithmatex">\(M\)</span>中<span class="arithmatex">\(x\)</span>的前驱（<span class="arithmatex">\(x\)</span>可能不存在于<span class="arithmatex">\(M\)</span>中）</p>
+<p>（6）求<span class="arithmatex">\(M\)</span>中<span class="arithmatex">\(x\)</span>的后继（<span class="arithmatex">\(x\)</span>可能不存在于<span class="arithmatex">\(M\)</span>中）</p>
+<details>
+<summary>Splay树写法</summary>
+<p>Splay（伸展树）是一种平衡二叉树，通过不断将某个结点旋转到根节点，使整棵树仍然满足BST的性质且保持平衡，由Daniel Sleator和Robert Tarjan发明。</p>
+<p><strong>Splay使得每次操作的均摊复杂度为<span class="arithmatex">\(O(\log n)\)</span></strong></p>
+<details class="success">
+<summary>均摊时间复杂度<span class="arithmatex">\(O(\log n)\)</span>的证明</summary>
+</details>
+<p>每个节点<span class="arithmatex">\(node\)</span>的信息包括：<span class="arithmatex">\(s_0,s_1\)</span>分别指示左右儿子，<span class="arithmatex">\(p\)</span>指示祖先。<span class="arithmatex">\(cnt\)</span>指示当前结点权值出现次数。</p>
+<details class="info">
+<summary>左旋，右旋的统一写法和pushup</summary>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>void rotate(int x)
+{
+    int y=tr[x].p,z=tr[y].p;
+    int k=tr[y].s[1]==x;
+    tr[y].s[k]=tr[x].s[k^1];
+    tr[tr[x].s[k^1]].p=y;
+    tr[x].s[k^1]=y;
+    tr[y].p=x;
+    tr[z].s[tr[z].s[1]==y]=x;
+    tr[x].p=z;
+    pushup(y),pushup(x);
+}
+</code></pre></div></td></tr></table></div>
+设链<span class="arithmatex">\(z\to y\to x\)</span>要进行左旋或右旋，则<span class="arithmatex">\(x\)</span>为<span class="arithmatex">\(y\)</span>的左儿子还是右儿子决定了左旋还是右旋。</p>
+<p>pushup用于更新子树总结点个数。
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>void pushup(int x)
+{
+     tr[x].size=tr[tr[x].s[0]].size+tr[tr[x].s[1]].size+tr[x].cnt;
+}
+</code></pre></div></td></tr></table></div></p>
+</details>
+<details class="info">
+<summary>Splay实现</summary>
+<p>伸展（Splay）：访问一个结点<span class="arithmatex">\(x\)</span>，并把<span class="arithmatex">\(x\)</span>旋转到根节点。</p>
+<p>将<span class="arithmatex">\(x\)</span>转到<span class="arithmatex">\(k\)</span>的下方，若<span class="arithmatex">\(k=0\)</span>，则将<span class="arithmatex">\(x\)</span>转到<span class="arithmatex">\(root\)</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>void splay(int x,int k)
+{
+    while(tr[x].p!=k)
+    {
+        int y=tr[x].p,z=tr[y].p;
+        if(z!=k)
+            (tr[y].s[0]==x)^(tr[z].s[0]==y)?rotate(x):rotate(y);
+        rotate(x);
+    }
+    if(k==0) root=x;
+}
+</code></pre></div></td></tr></table></div></p>
+</details>
+<details class="info">
+<summary>find查找的实现</summary>
+<p>找到<span class="arithmatex">\(v\)</span>所在结点，并把该节点转到根。
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>void find(int v)
+{
+    int x=root;
+    while(tr[x].s[v&gt;tr[x].v]&amp;&amp;v!=tr[x].v)
+        x=tr[x].s[v&gt;tr[x].v];
+    splay(x,0);
+}
+</code></pre></div></td></tr></table></div></p>
+</details>
+<details class="info">
+<summary>getpre查找前驱、getsuc查找后继的实现</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code>int get_pre(int v)
+{
+    find(v);
+    int x=root;//此时权值为v/接近v的结点已经被转到根节点
+    if(tr[x].v&lt;v) return x;
+    x=tr[x].s[0];
+    while(tr[x].s[1]) x=tr[x].s[1];
+    splay(x,0);return x;
+}
+int get_suc(int v)
+{   
+    find(v);
+    int x=root;
+    if(tr[x].v&gt;v) return x;
+    x=tr[x].s[1];
+    while(tr[x].s[0]) x=tr[x].s[0];
+    splay(x,0);return x;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<details class="info">
+<summary>del删除结点，insert插入节点</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code>void del(int v)
+{
+    int pre=get_pre(v),suc=get_suc(v);
+    splay(pre,0);splay(suc,pre);
+    int del=tr[suc].s[0];
+    if(tr[del].cnt&gt;1) tr[del].cnt--,splay(del,0);
+    else tr[suc].s[0]=0,splay(suc,0);
+}
+void insert(int v)
+{
+    int x=root,p=0;
+    while(x&amp;&amp;tr[x].v!=v)
+        p=x,x=tr[x].s[v&gt;tr[x].v];
+    if(x) tr[x].cnt++;
+    else
+    {
+        x=++idx;
+        tr[p].s[v&gt;tr[p].v]=x;
+        tr[x].init(p,v);
+    }
+    splay(x,0);
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<details class="info">
+<summary>getrank查询排名，getval根据排名查询数值</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code>int get_rank(int v)
+{
+    insert(v);
+    int res=tr[tr[root].s[0]].size;
+    del(v);return res;
+}
+int get_val(int p)
+{
+    int x=root;
+    while(1)
+    {
+        int y=tr[x].s[0];
+        if(tr[y].size+tr[x].cnt&lt;p)
+        {
+            p-=tr[y].size+tr[x].cnt;
+            x=tr[x].s[1];
+        }
+        else
+        {
+            if(tr[y].size&gt;=p) x=tr[x].s[0];
+            else break;
+        }
+    }
+    splay(x,0);
+    return tr[x].v;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+<details class="success">
+<summary>Splay参考代码，以<span style="color: #7ec0ee;"><strong>LuoguP6136 普通平衡树（数据加强版）</strong></span>为例</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e6+5,INF=2147483647;
+int q,root,idx,n;
+struct node
+{int s[2],p,v,cnt,size;
+void init(int p1,int v1)
+{p=p1,v=v1,cnt=size=1;}}tr[N*4];
+void pushup(int x)
+{
+    tr[x].size=tr[tr[x].s[0]].size+
+    tr[tr[x].s[1]].size+tr[x].cnt;
+}
+void rotate(int x)
+{
+    int y=tr[x].p,z=tr[y].p;
+    int k=tr[y].s[1]==x;
+    tr[y].s[k]=tr[x].s[k^1];
+    tr[tr[x].s[k^1]].p=y;
+    tr[x].s[k^1]=y;
+    tr[y].p=x;
+    tr[x].p=z;
+    tr[z].s[tr[z].s[1]==y]=x;
+    pushup(y),pushup(x);
+}
+void splay(int x,int k)
+{
+    while(tr[x].p!=k)
+    {
+        int y=tr[x].p,z=tr[y].p;
+        if(z!=k)
+            (tr[z].s[0]==y)^(tr[y].s[0]==x)?
+            rotate(x):rotate(y);
+        rotate(x);
+    }
+    if(k==0) root=x;
+}
+void find(int v)
+{
+    int x=root;
+    while(tr[x].s[v&gt;tr[x].v]&amp;&amp;tr[x].v!=v)
+        x=tr[x].s[v&gt;tr[x].v];
+    splay(x,0);
+}
+int get_pre(int v)
+{
+    find(v);int x=root;
+    if(tr[x].v&lt;v) return x;
+    x=tr[x].s[0];
+    while(tr[x].s[1]) x=tr[x].s[1];
+    splay(x,0);return x;
+}
+int get_suc(int v)
+{
+    find(v);int x=root;
+    if(tr[x].v&gt;v) return x;
+    x=tr[x].s[1];
+    while(tr[x].s[0]) x=tr[x].s[0];
+    splay(x,0);return x;
+}
+void insert(int v)
+{
+    int x=root,p=0;
+    while(x&amp;&amp;tr[x].v!=v)
+        p=x,x=tr[x].s[v&gt;tr[x].v];
+    if(x) tr[x].cnt++;
+    else
+    {
+        x=++idx;
+        tr[p].s[v&gt;tr[p].v]=x;
+        tr[x].init(p,v);
+    }
+    splay(x,0);
+}
+void del(int v)
+{
+    int pre=get_pre(v),suc=get_suc(v);
+    splay(pre,0);splay(suc,pre);
+    int del=tr[suc].s[0];
+    if(tr[del].cnt&gt;1) tr[del].cnt--,splay(del,0);
+    else tr[suc].s[0]=0,splay(suc,0);
+}
+int get_rank(int v)
+{
+    insert(v);
+    int res=tr[tr[root].s[0]].size;
+    del(v);return res;
+}
+int get_val(int p)
+{
+    int x=root;
+    while(1)
+    {
+        int y=tr[x].s[0];
+        if(tr[y].size+tr[x].cnt&lt;p)
+        {
+            p-=tr[y].size+tr[x].cnt;
+            x=tr[x].s[1];
+        }
+        else
+        {
+            if(tr[y].size&gt;=p) x=tr[x].s[0];
+            else break;
+        }
+    }
+    splay(x,0);
+    return tr[x].v;
+}
+int main()
+{
+    insert(-INF),insert(INF);
+    cin&gt;&gt;n&gt;&gt;q;int op,x,last=0,ans=0;
+    for(int i=1;i&lt;=n;i++)
+        scanf(&quot;%d&quot;,&amp;x),insert(x);
+    for(int i=1;i&lt;=q;i++)
+    {
+        scanf(&quot;%d%d&quot;,&amp;op,&amp;x);
+        if(op==1) insert(x^last);
+        else if(op==2) del(x^last);
+        else
+        {
+            if(op==3) last=get_rank(x^last);
+            else if(op==4) last=get_val((x^last)+1);
+            else if(op==5) last=tr[get_pre(x^last)].v;
+            else last=tr[get_suc(x^last)].v;
+            ans^=last; 
+        }
+    }
+    cout&lt;&lt;ans;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+</details>
+<details>
+<summary>Treap写法</summary>
+<div class="admonition info">
+<p class="admonition-title">单次操作的期望时间复杂度优化为<span class="arithmatex">\(O(\log n)\)</span></p>
+<p>随机优先级使得Treap的形状等价于“随机二叉搜索树”，后者的期望高度为<span class="arithmatex">\(O(\log n)\)</span></p>
+<p>同时满足BST和heap性质的树是唯一的，heap确定了BST的插入顺序。</p>
+<details class="success">
+<summary>相关证明</summary>
+<p>按键值大小排序为<span class="arithmatex">\(1,2,\cdots,n\)</span>，第<span class="arithmatex">\(i\)</span>个键的深度为<span class="arithmatex">\(depth_i\)</span>，对每个<span class="arithmatex">\(j\neq i\)</span>定义指示变量<span class="arithmatex">\(A_j=1\)</span>当且仅当<span class="arithmatex">\(j\)</span>是<span class="arithmatex">\(i\)</span>的祖先。则<span class="arithmatex">\(\displaystyle D_i=\sum_\limits{j\neq i}A_j\)</span>，故<span class="arithmatex">\(\displaystyle ED_i=\sum_\limits{j\neq i}A_j\)</span></p>
+<p>对任意区间<span class="arithmatex">\([a,b],i\in [a,b]\)</span>，区间内优先级最高的结点会成为这个区间对应子树的根，对于<span class="arithmatex">\(j&lt;i\)</span>，结点<span class="arithmatex">\(j\)</span>成为<span class="arithmatex">\(i\)</span>的祖先当且仅当区间<span class="arithmatex">\([j,i]\)</span>中<span class="arithmatex">\(j\)</span>的键值最大，概率为<span class="arithmatex">\(\displaystyle \frac{1}{j-i+1}\)</span></p>
+<p>故<span class="arithmatex">\(\displaystyle ED_i=\sum_\limits{j\neq i}A_j=\sum_{k=1}^{i-1}\frac{1}{k-i+1}+\sum_{k=i+1}^{n}\frac{1}{k-i+1}=H_{i}+H_{n-i+1}-2\)</span>，其中<span class="arithmatex">\(H_m\)</span>是第<span class="arithmatex">\(m\)</span>个调和数，<span class="arithmatex">\(\displaystyle H_m=\sum_{t=1}^{m}\frac{1}{t}=\ln m+\gamma\)</span></p>
+<p>故<span class="arithmatex">\(ED_i=O(\log n)\)</span>对任意<span class="arithmatex">\(i\)</span>成立，树高度的期望为<span class="arithmatex">\(O(\log n)\)</span></p>
+</details>
+</div>
+<details class="success">
+<summary>Treap参考代码，以<span style="color: #7ec0ee;"><strong>LuoguP6136 普通平衡树（数据加强版）</strong></span>为例</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span></pre></div></td><td class="code"><div><pre><span></span><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1e6+5,INF=2147483647;
+int q,idx,root=0,n;
+struct node
+{
+    int s[2],size,cnt,rd,v;
+    void init(int v1)
+    {v=v1,cnt=size=1,rd=rand();}
+}tr[N*4];
+void pushup(int p)
+{
+    tr[p].size=tr[tr[p].s[0]].size+tr[tr[p].s[1]].size+tr[p].cnt;
+}
+void rotate(int &amp;p,int d)
+{
+    int k=tr[p].s[d^1];
+    tr[p].s[d^1]=tr[k].s[d];
+    tr[k].s[d]=p;
+    pushup(p),pushup(k);p=k;
+}
+void insert(int &amp;p,int x)
+{
+    if(!p)
+    {
+        p=++idx,tr[p].init(x);return;
+    } 
+    if(tr[p].v==x)
+    {
+        tr[p].cnt++,tr[p].size++;
+        return;
+    }
+    int d=x&gt;tr[p].v;
+    insert(tr[p].s[d],x);
+    if(tr[p].rd&lt;tr[tr[p].s[d]].rd) rotate(p,d^1);
+    pushup(p);
+}
+void del(int &amp;p,int x)
+{
+    if(!p) return;
+    if(x&lt;tr[p].v) del(tr[p].s[0],x);
+    else if(x&gt;tr[p].v) del(tr[p].s[1],x);
+    else
+    {
+        if(!tr[p].s[0]&amp;&amp;!tr[p].s[1])
+        {
+            tr[p].cnt--,tr[p].size--;
+            if(tr[p].cnt==0) p=0;
+        }
+        else if(tr[p].s[0]&amp;&amp;!tr[p].s[1])
+        {
+            rotate(p,1);
+            del(tr[p].s[1],x);
+        }
+        else if(!tr[p].s[0]&amp;&amp;tr[p].s[1])
+        {
+            rotate(p,0);
+            del(tr[p].s[0],x);
+        }
+        else
+        {
+            int d=tr[tr[p].s[0]].rd&gt;tr[tr[p].s[1]].rd;
+            rotate(p,d);
+            del(tr[p].s[d],x);
+        }
+    }
+    pushup(p);
+}
+int getrank(int p,int x)
+{
+    if(!p) return 1;
+    if(tr[p].v==x) return tr[tr[p].s[0]].size+1;
+    if(tr[p].v&lt;x) return tr[tr[p].s[0]].size+
+    tr[p].cnt+getrank(tr[p].s[1],x);
+    if(tr[p].v&gt;x) return getrank(tr[p].s[0],x);
+}
+int getval(int p,int x)
+{
+    if(!p) return 0;
+    if(tr[tr[p].s[0]].size&gt;=x) return getval(tr[p].s[0],x);
+    else if(tr[tr[p].s[0]].size+tr[p].cnt&lt;x) 
+        return getval(tr[p].s[1],x-tr[tr[p].s[0]].size-tr[p].cnt);
+    else return tr[p].v; 
+}
+int get_pre(int p,int x)
+{
+    if(!p) return -INF;
+    if(tr[p].v&gt;=x) return get_pre(tr[p].s[0],x);
+    else return max(tr[p].v,get_pre(tr[p].s[1],x));
+}
+int get_suc(int p,int x)
+{
+    if(!p) return INF;
+    if(tr[p].v&lt;=x) return get_suc(tr[p].s[1],x);
+    else return min(tr[p].v,get_suc(tr[p].s[0],x));
+}
+int main()
+{
+    int op,x,last=0,ans=0;
+    cin&gt;&gt;n&gt;&gt;q;
+    for(int i=1;i&lt;=n;i++) 
+        scanf(&quot;%d&quot;,&amp;x),insert(root,x);
+    for(int i=1;i&lt;=q;i++)
+    {
+        scanf(&quot;%d%d&quot;,&amp;op,&amp;x);
+        x=x^last;
+        if(op==1) insert(root,x);
+        if(op==2) del(root,x);
+        if(op==3) last=getrank(root,x),ans^=last;
+        if(op==4) last=getval(root,x),ans^=last;
+        if(op==5) last=get_pre(root,x),ans^=last;
+        if(op==6) last=get_suc(root,x),ans^=last;
+    }
+    cout&lt;&lt;ans;
+    return 0;
+}
+</code></pre></div></td></tr></table></div>
+</details>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "mathjax"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
