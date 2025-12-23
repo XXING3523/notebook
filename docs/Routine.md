@@ -18,57 +18,33 @@
 
 喝水：一天喝水量为2500mL~3000mL
 
-|      日期      |                     练琴                     |                          锻炼                           |                     开销                     |                     饮食                     | 作息 | 虚度 |                     喝水                     |
-| :------------: | :------------------------------------------: | :-----------------------------------------------------: | :------------------------------------------: | :------------------------------------------: | :--: | :--: | :------------------------------------------: |
-| 12月1日（一）  | <span style="color: orange;">**Done**</span> |      <span style="color: orange;">**健身**</span>       | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      | <span style="color: orange;">**Done**</span> |
-| 12月2日（二）  | <span style="color: orange;">**Done**</span> |      <span style="color: orange;">**健身**</span>       | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      | <span style="color: orange;">**Done**</span> |
-| 12月3日（三）  | <span style="color: orange;">**Done**</span> |                                                         | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      | <span style="color: orange;">**Done**</span> |
-| 12月4日（四）  |                                              |                                                         |                                              |                                              |      |      |                                              |
-| 12月5日（五）  | <span style="color: orange;">**Done**</span> |    <span style="color: orange;">**跑步4000m**</span>    | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      | <span style="color: orange;">**Done**</span> |
-| 12月6日（六）  | <span style="color: orange;">**Done**</span> |      <span style="color: orange;">**健身**</span>       | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      | <span style="color: orange;">**Done**</span> |
-| 12月7日（日）  | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**健身，跑步6000m**</span> |                                              |                                              |      |      | <span style="color: orange;">**Done**</span> |
-| 12月8日（一）  | <span style="color: orange;">**Done**</span> |                                                         | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      | <span style="color: orange;">**Done**</span> |
-| 12月9日（二）  | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**健身，跑步4000m**</span> | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      |                                              |
-| 12月10日（三） |                                              |                                                         | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      |                                              |
-| 12月11日（四） | <span style="color: orange;">**Done**</span> |                                                         | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      | <span style="color: orange;">**Done**</span> |
-| 12月12日（五） |                                              | <span style="color: orange;">**健身，跑步4000m**</span> | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      | <span style="color: orange;">**Done**</span> |
-| 12月13日（六） |                                              |                                                         | <span style="color: orange;">**Done**</span> |                                              |      |      | <span style="color: orange;">**Done**</span> |
-| 12月14日（日） |                                              | <span style="color: orange;">**健身，跑步3000m**</span> | <span style="color: orange;">**Done**</span> |                                              |      |      |                                              |
-| 12月15日（一） | <span style="color: orange;">**Done**</span> |      <span style="color: orange;">**健身**</span>       |                                              |                                              |      |      |                                              |
-| 12月16日（二） |                                              |    <span style="color: orange;">**跑步2000m**</span>    | <span style="color: orange;">**Done**</span> |                                              |      |      |                                              |
-| 12月17日（三） |                                              |                                                         |                                              |                                              |      |      |                                              |
-| 12月18日（四） |                                              |                                                         | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      | <span style="color: orange;">**Done**</span> |
-| 12月19日（五） |                                              |    <span style="color: orange;">**跑步4000m**</span>    | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      |                                              |
-| 12月20日（六） | <span style="color: orange;">**Done**</span> |                                                         | <span style="color: orange;">**Done**</span> | <span style="color: orange;">**Done**</span> |      |      |                                              |
-| 12月21日（日） | <span style="color: orange;">**Done**</span> |                                                         | <span style="color: orange;">**Done**</span> |                                              |      |      |                                              |
-| 12月22日（一） |                                              |                                                         |                                              |                                              |      |      |                                              |
-| 12月23日（二） |                                              |                                                         |                                              |                                              |      |      |                                              |
-| 12月24日（三） |                                              |                                                         |                                              |                                              |      |      |                                              |
-| 12月25日（四） |                                              |                                                         |                                              |                                              |      |      |                                              |
-| 12月26日（五） |                                              |                                                         |                                              |                                              |      |      |                                              |
-| 12月27日（六） |                                              |                                                         |                                              |                                              |      |      |                                              |
-| 12月28日（日） |                                              |                                                         |                                              |                                              |      |      |                                              |
-| 12月29日（一） |                                              |                                                         |                                              |                                              |      |      |                                              |
-| 12月30日（二） |                                              |                                                         |                                              |                                              |      |      |                                              |
-| 12月31日（三） |                                              |                                                         |                                              |                                              |      |      |                                              |
-|  1月1日（四）  |                                              |                                                         |                                              |                                              |      |      |                                              |
-|  1月2日（五）  |                                              |                                                         |                                              |                                              |      |      |                                              |
-|  1月3日（六）  |                                              |                                                         |                                              |                                              |      |      |                                              |
-|  1月4日（日）  |                                              |                                                         |                                              |                                              |      |      |                                              |
-|  1月5日（一）  |                                              |                                                         |                                              |                                              |      |      |                                              |
-|  1月6日（二）  |                                              |                                                         |                                              |                                              |      |      |                                              |
-|  1月7日（三）  |                                              |                                                         |                                              |                                              |      |      |                                              |
-|  1月8日（四）  |                                              |                                                         |                                              |                                              |      |      |                                              |
-|  1月9日（五）  |                                              |                                                         |                                              |                                              |      |      |                                              |
-| 1月10日（六）  |                                              |                                                         |                                              |                                              |      |      |                                              |
+|      日期      | 练琴 | 锻炼 | 开销 | 饮食 | 作息 | 虚度 | 喝水 |
+| :------------: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+|      12月      |  12  |  12  |  17  |  13  |  0   |  0   |  11  |
+| 12月22日（一） |      |      | Done | Done |      |      |      |
+| 12月23日（二） |      |      | Done | Done |      |      | Done |
+| 12月24日（三） |      |      |      |      |      |      |      |
+| 12月25日（四） |      |      |      |      |      |      |      |
+| 12月26日（五） |      |      |      |      |      |      |      |
+| 12月27日（六） |      |      |      |      |      |      |      |
+| 12月28日（日） |      |      |      |      |      |      |      |
+| 12月29日（一） |      |      |      |      |      |      |      |
+| 12月30日（二） |      |      |      |      |      |      |      |
+| 12月31日（三） |      |      |      |      |      |      |      |
+|  1月1日（四）  |      |      |      |      |      |      |      |
+|  1月2日（五）  |      |      |      |      |      |      |      |
+|  1月3日（六）  |      |      |      |      |      |      |      |
+|  1月4日（日）  |      |      |      |      |      |      |      |
+|  1月5日（一）  |      |      |      |      |      |      |      |
+|  1月6日（二）  |      |      |      |      |      |      |      |
+|  1月7日（三）  |      |      |      |      |      |      |      |
+|  1月8日（四）  |      |      |      |      |      |      |      |
+|  1月9日（五）  |      |      |      |      |      |      |      |
+| 1月10日（六）  |      |      |      |      |      |      |      |
 
 12月23日
 
 
-- [ ] 计算机系统基础复习与PA 4-2 完成（12点30到16点）
-- [ ] 锻炼（16点到18点）
-
-- [ ] 计算机系统基础复习（19点到22点30）
 - [ ] 练琴（22点30到24点）
 
 12月24日
