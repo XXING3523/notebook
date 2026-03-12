@@ -1,11 +1,43 @@
-241220105 张鑫源 周四晚上的班级，第四章 以人民为中心
+每次执行指令都会新建 `overleaf_project_时间戳` 文件夹。
 
-问题1：在坚持以人民为中心的过程中，可能会出现不同群体需求多样化以及短期利益与长期利益，个人情感等方面的博弈，党是怎么在这些方面做到公平兼顾，照顾到所有人的呢？如三峡大坝建成需要百万人民迁移，有些人割舍不了自己的故乡情结，希望留在原地，党是怎么平衡国家的长远利益与人民的情感诉求的呢？又采取了哪些措施来补偿群众呢？
+1. 在里面生成 [main.tex](vscode-file://vscode-app/d:/Microsoft VS Code/61b3d0ab13/resources/app/out/vs/code/electron-browser/workbench/workbench.html)。
+2. [main.tex](vscode-file://vscode-app/d:/Microsoft VS Code/61b3d0ab13/resources/app/out/vs/code/electron-browser/workbench/workbench.html) 内容始终来自你定义的初始模板，不再读取当前打开文件。
 
-问题2：在资本主义思潮比较发达的地方，以人民为中心的发展思想是如何贯彻下去的？会遇到哪些方面的阻碍呢？如之前上海中小学生的午餐出现过的虾仁发臭情况，波及学生近万名，我们都知晓对于贫困地区的孩子们，其早餐午餐补助是很丰富的，这方面党充分贯彻了人民至上的理念，但在资本覆盖的地区，有什么措施来减少资本逐利对人民利益造成的损害呢？
+已调整内容：
 
-问题3：现在有些基层政策可能是处于为人民的考虑，但实际上的结果却流于形式，造成了资源的浪费，如我所处的市区造了一个沿河公园，但实际上没有经过民生调研，过了一年就荒废了，所有的设施也都出现了不同程度的生锈，无人维护，河水也是臭的，鉴于此，我想了解党是如何防止形式主义的蔓延，如何让人民参与到政策制定和执行的监督中的？
+- 新任务：`.vscode/tasks.json:5`
+  `Generate Overleaf TeX From Initial Template`
 
-问题4：医疗、教育、住房都是非常消耗人民积蓄的必须品，曾经也出现过医疗腐败，各名校抢占资源，通过特殊途径避开高考进行招生，资本炒房热等，党是通过哪些具体的措施来限制医疗资本、教育资本、房地产资本肆意扩张，推动这些资源更加合理的分配，维护最广大人民的利益的呢？未来又可能会做出哪些行动呢？
+- 新脚本：[generate-overleaf-from-template.ps1](vscode-file://vscode-app/d:/Microsoft VS Code/61b3d0ab13/resources/app/out/vs/code/electron-browser/workbench/workbench.html)
 
-问题5：我目前所处的社区参政议政的能力与热情并不高大家都不知道这回事，似乎我们都从来没有正式地参与过国家的政策建设，我们也从来没有关注过市政府发布的各种政策，作为普通公民，我能为党实现”以人民为中心“理念的努力在政策落实与宣传上做出哪些帮助呢？
+- 初始模板：[overleaf-initial-template.tex](vscode-file://vscode-app/d:/Microsoft VS Code/61b3d0ab13/resources/app/out/vs/code/electron-browser/workbench/workbench.html)
+
+- 旧脚本已删除：`scripts/generate-overleaf-from-current.ps1`
+
+- 你以后直接这样调用：
+
+  1. `Ctrl+Shift+P`
+  2. `Tasks: Run Task`
+  3. 选 `Generate Overleaf TeX From Initial Template`
+
+  如果你想更新“初始格式”，只需要改这个文件：
+  [overleaf-initial-template.tex](vscode-file://vscode-app/d:/Microsoft VS Code/61b3d0ab13/resources/app/out/vs/code/electron-browser/workbench/workbench.html)
+  之后每次执行任务都会按它生成新文档。
+
+**使用方法：**
+
+1. **通过 VS Code 任务运行（推荐）：**
+   - 按 `Ctrl+Shift+P`
+   - 输入"Tasks: Run Task"
+   - 选择 **"Generate Math Worksheet and Download"**
+   - PDF 将自动生成并复制到 Downloads 文件夹
+2. **通过批处理文件运行：**
+   - 双击 [run-worksheet.bat](vscode-file://vscode-app/d:/Microsoft VS Code/61b3d0ab13/resources/app/out/vs/code/electron-browser/workbench/workbench.html)
+   - 或在终端运行：[run-worksheet.bat](vscode-file://vscode-app/d:/Microsoft VS Code/61b3d0ab13/resources/app/out/vs/code/electron-browser/workbench/workbench.html)
+
+
+
+**脚本参数（可选）：**
+
+- [--count 30](vscode-file://vscode-app/d:/Microsoft VS Code/61b3d0ab13/resources/app/out/vs/code/electron-browser/workbench/workbench.html)：指定题目数量（默认 50）
+- [--seed 1234](vscode-file://vscode-app/d:/Microsoft VS Code/61b3d0ab13/resources/app/out/vs/code/electron-browser/workbench/workbench.html)：指定随机种子（可重现相同题目）
