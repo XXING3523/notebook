@@ -1,11 +1,8 @@
 已知$y>0,\theta\in\mathbb{R},\displaystyle z=\frac{2\sin^2\theta+y^2}{y\sqrt{8\sin^2\theta+y^2}}$，若$y=f(\theta)$时$z$取得最小值，函数$f(\theta)$的最大值为？
 
-\textbf{【2026武汉三调14节选】}解方程：$  \begin{cases} \displaystyle d^2+\sin ^2(\omega x_0+wd)=1 &(1)  \\ \displaystyle 4d^2+\sin ^2(\omega x_0+2\omega d)=4 & (2) \\d^2+\sin ^2(\omega x_0-\omega d)=1 & (3)
-\end{cases}$
 
-\textbf{【2023新高考I卷22节选】}求$f(x,k)=\displaystyle 2\sqrt{1+k^2}|k-2x|+2\sqrt{1+\frac{1}{k^2}}|\frac{1}{k}+2x|$的最小值。
 
-\textbf{【2022浙江21节选】}求$\displaystyle \frac{\sqrt{16x^2+1}}{|3x+1|}$的最大值。
+\item \textbf{【2012江苏14】}已知正数 $a,b,c$ 满足 $5c-3a \leqslant b \leqslant 4c-a, c\ln b \geqslant a + c\ln c$, 则 $\displaystyle \frac{b}{a}$ 的取值范围是？
 
 \textbf{【2021新高考I卷19（2）节选】}解比例方程
 
@@ -59,17 +56,6 @@
 （ii）若存在$x_0$既是$f(x)$的极值点，也是$f(x)$的不动点，求$b$；
 
 （2）判断是否存在$a,b$，使得$f(x)$有两个极值点，且这两个极值点均为$f(x)$的不动点，并说明理由。
-
-2.若 $1+\sqrt{2}i$ 是关于 $x$ 的实系数方程 $x^2+bx+c=0$ 的一个复根，则
-
-（A） $b=2,c=3$
-（B） $b=2,c=-1$
-（C） $b=-2,c=-1$
-（D） $b=-2,c=3$
-
-3.\textbf{【2025新高考I卷4改编】}若点$(a,0)$是函数$\displaystyle y=2\tan (x-\frac{2\pi}{3})$的图象的一个对称中心，则$a$的最小值为
-
-（A）$\displaystyle\frac{\pi}{6}$（B）$\displaystyle\frac{\pi}{3}$（C）$\displaystyle\frac{\pi}{2}$（D）$\displaystyle\frac{2\pi}{3}$
 
 6.记数列$\{a_n\}$的前$n$项和为$S_n$，若$S_n+(-1)^n a_n = n^2 - 1$，则$a_1 =$
 
@@ -142,18 +128,6 @@
 （C） $NF=QF$
 （D） $PN=\sqrt{3}PQ$
 
-11.\textbf{【2025“ToMath一轮检测”（网络联考）11】}已知数列$\left \{ a_n \right \} $的前$n$项和为$S_n$，且$a_n+S_n=kn+b$，其中$k,b$不同时为$0$，则下列说法正确的是
-
-（A）当$k=0$时，$\left \{ a_n \right \} $为等比数列
-
-（B）当$k\neq 0$时，$\left \{ a_n \right \} $一定不是等差数列
-
-（C）当$k=b$时，$\left \{ a_n \right \} $为常数列
-
-（D）当$k>b$时，$\left \{ a_n \right \} $是单调递增数列
-
-
-
 13.已知椭圆
 $\displaystyle \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$
 和双曲线
@@ -187,3 +161,7 @@ $\displaystyle \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$
 （1） 求实数$k$的取值范围；
 
  （2）若2是$f(x)$的一个极大值点，证明：$\displaystyle \frac{f(x_3)-f(x_1)}{x_3-x_1}<\frac{k^2}{e}-k$。
+
+
+
+单射的另一种等价表述：若定义域$A$中的不同元素在$f:A\to B$下的像不同，则称$f$为单射。
