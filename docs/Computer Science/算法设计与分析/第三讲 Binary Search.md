@@ -18,7 +18,7 @@
 
 ---
 
-**中位数查找（Median Sreach）**
+**中位数查找（Median Sreach）（期中不考）**
 
 输入两个递增排序的数列$A[1,\cdots,n],B[1,\cdots,n]$，求$A\cup B$的中位数
 

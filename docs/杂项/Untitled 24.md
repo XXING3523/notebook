@@ -1,5 +1,3 @@
-
-
 \item \textbf{【2009课标全国21(2)】}已知函数 $f(x)=(x^3+3x^2+ax+b)e^{-x}$。若 $f(x)$ 在 $(-\infty,\alpha), (2,\beta)$ 单调增加，在 $(\alpha,2), (\beta,+\infty)$ 单调减少，证明 $\beta - \alpha > 6$。
 
 \item 设函数 $\displaystyle f(x) = \frac{\ln x}{x+1} - \ln x + \ln(x+1)$
@@ -10,13 +8,7 @@
 
 \item \textbf{【2026江南十校高三联考19（2）】}已知函数$f(x)=e^x\cos 3x-ae^{3x}\cos x$，若$f(x)$在$\displaystyle x\in(0,\frac{\pi}{4})$上没有零点，求实数$a$的取值范围。
 
-\item \textbf{【2019江苏19】}设函数 $f(x)=(x-a)(x-b)(x-c)$, $a,b,c\in\mathbb{R}$, $f'(x)$ 为 $f(x)$ 的导函数。
 
-（1） 若 $a=b=c$, $f(4)=8$, 求 $a$ 的值；
-
-（2） 若 $a\neq b$, $b=c$, 且 $f(x)$ 和 $f'(x)$ 的零点均在集合 $\{-3,1,3\}$ 中, 求 $f(x)$ 的极小值；
-
-（3） 若 $a=0$, $0<b\le 1$, $c=1$, 且 $f(x)$ 的极大值为 $M$, 求证: $\displaystyle M\le \frac{4}{27}$。
 
 \item \textbf{【2016全国II卷理21】}
 

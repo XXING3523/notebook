@@ -176,7 +176,7 @@ $$\max_{x} \mathbb{E}_R [T(A_R, x)] \ge \min_{A} \mathbb{E}_{x \sim D} [T(A, x)]
 
 ---
 
-**桶排序（Bucket Sort）**
+**桶排序（Bucket Sort）（期中不考）**
 
 用于整数排序。
 
@@ -186,7 +186,7 @@ $$\max_{x} \mathbb{E}_R [T(A_R, x)] \ge \min_{A} \mathbb{E}_{x \sim D} [T(A, x)]
 
 ---
 
-**基数排序（Radix Sort）**
+**基数排序（Radix Sort）（期中不考）**
 
 按照每一位进行比较，记基数为$k$，一般为十进制：$k=10$，对应最大数字的位数为$d$。
 

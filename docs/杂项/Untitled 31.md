@@ -89,12 +89,3 @@
     
     （记$p(\varepsilon)$表示命题$|A-6|\leqslant \varepsilon$，$q$表示命题$A=6$.）
 
-\item \textbf{（多选）}设 $n\in\mathbb{N}^*$, 函数 $f(x)=\ln\left[\sin(\pi x)\cdot\sin(2\pi x)\cdot\cdots\cdot\sin(n\pi x)\right]$ 的定义域为 $D$. 记 $E=D\cap[0,1]$. 两个集合 $A,B$ 不交指的是 $A\cap B=\varnothing$. 则
-
-（A） 若 $n=2$, 则 $f(x)$ 是定义在 $D$ 上的偶函数
-
-（B） 若 $n=2$, 则 $f(x)$ 在 $\displaystyle x=\frac{1}{3}$ 处取到最大值
-
-（C） 若 $n=4$, 则 $E$ 可表示成 $4$ 个两两不交的开区间的并
-
-（D） 若 $n=6$, 则 $E$ 可表示成 $6$ 个两两不交的开区间的并

@@ -29,7 +29,7 @@ $$\displaystyle T(n) \le \frac{2c}{n} \sum_{i=\lfloor n/2 \rfloor}^{n-1} i + an$
 $$\displaystyle T(n) \le  \frac{3cn}{4} + an + \frac{c}{2}$$
 取 $c > 4a$即可。
 
-**指示变量法证明**
+**指示变量法证明（期中不考）**
 
 假设数组排序后是：$z_1, z_2, \dots, z_n$。
 *   **目标点 $z_k$**：我们要找的那个“全场第 $k$ 小”的数。
@@ -147,7 +147,7 @@ $T(n) \le 0.9cn + an$
 
 ---
 
-**Selection in Sorted Arrays**
+**多路归并排序（Selection in Sorted Arrays）（期中不考）**
 
 **在 $m$ 个已经各自有序的数组中，找到全局第 $k$ 小的元素，这些元素的总数为$n$**
 

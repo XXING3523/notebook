@@ -156,12 +156,3 @@ $\displaystyle \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$
 
  （iii）$\triangle QC_1C_2$的面积是定值。
 
-19.已知函数$\displaystyle f(x)=\frac{e^x}{x^2}-k\left(\frac{2}{x}+\ln x\right)$有三个极值点$x_1,x_2,x_3$，且$x_1<x_2<x_3$。
-
-（1） 求实数$k$的取值范围；
-
- （2）若2是$f(x)$的一个极大值点，证明：$\displaystyle \frac{f(x_3)-f(x_1)}{x_3-x_1}<\frac{k^2}{e}-k$。
-
-
-
-单射的另一种等价表述：若定义域$A$中的不同元素在$f:A\to B$下的像不同，则称$f$为单射。

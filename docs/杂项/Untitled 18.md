@@ -8,42 +8,8 @@
 （A）充分而不必要条件 \quad （B）必要而不充分条件
 （C）充要条件 \quad （D）既不充分也不必要条件
 
-（2）
-
-（1）【2018 全国 I，9】
-已知函数 $\displaystyle f(x) = \begin{cases} e^x, & x \leqslant 0, \\ \ln x, & x > 0. \end{cases}$ $\displaystyle g(x) = f(x) + x + a$．若 $\displaystyle g(x)$ 存在 $\displaystyle 2$ 个零点，则 $\displaystyle a$ 的取值范围是
-（A）$\displaystyle [-1, 0)$（B）$\displaystyle [0, +\infty)$（C）$\displaystyle [-1, +\infty)$（D）$\displaystyle [1, +\infty)$
-
-（2）【2024 新课标 I，6】
-已知函数 $\displaystyle f(x) = \begin{cases} -x^2 - 2ax - a, & x < 0, \\ e^x + \ln(x+1), & x \geqslant 0 \end{cases}$ 在 $\displaystyle \mathbb{R}$ 上单调递增，则 $\displaystyle a$ 的取值范围是
-（A）$\displaystyle (-\infty, 0]$（B）$\displaystyle [-1, 0]$（C）$\displaystyle [-1, 1]$（D）$\displaystyle [0, +\infty)$
-
-（3）【2024 新课标 II，8】
-设函数 $\displaystyle f(x) = (x+a) \ln(x+b)$．若 $\displaystyle f(x) \geqslant 0$，则 $\displaystyle a^2 + b^2$ 的最小值为
-（A）$\displaystyle \frac{1}{8}$（B）$\displaystyle \frac{1}{4}$（C）$\displaystyle \frac{1}{2}$（D）$\displaystyle 1$
-
-（4）【2011 福建，10】
-已知函数 $\displaystyle f(x) = e^x + x$．对于曲线 $\displaystyle y = f(x)$ 上横坐标成等差数列的三个点 $\displaystyle A, B, C$，给出以下判断：
-（1）$\displaystyle \triangle ABC$ 一定是钝角三角形；
-（2）$\displaystyle \triangle ABC$ 可能是直角三角形；
-（3）$\displaystyle \triangle ABC$ 可能是等腰三角形；
-（4）$\displaystyle \triangle ABC$ 不可能是等腰三角形．
-其中，正确的判断是
-（A）$\displaystyle （1）（3）$（B）$\displaystyle （1）（4）$（C）$\displaystyle （2）（3）$（D）$\displaystyle （2）（4）$
-
-### 
-
 （1）【2023 浙江学考，23(1)】
 已知函数 $\displaystyle f(x) = x^2 - 2x - \sin\left(\frac{\pi}{2}x\right)$．求 $\displaystyle f(x)$ 在区间 $\displaystyle [0, 1]$ 上的最大值．
-
-（2）【2023 湖南学考，25】
-已知函数 $\displaystyle f(x) = 3 \ln x$，$\displaystyle g(x) = 2(\sin x - \cos x)$．
-（1）写出函数 $\displaystyle f(x)$ 的单调区间；
-（2）求函数 $\displaystyle g(x)$ 的最大值；
-（3）求证：方程 $\displaystyle f(x) + g(x) = 0$ 有唯一实根 $\displaystyle x_0$，且 $\displaystyle 1 - \sqrt{3} < f(x_0) < 0$．
-
-（3）【2021 北京第二次学考，28(2)】
-已知函数 $\displaystyle f(x) = x^2 + \frac{1}{x}$ 与 $\displaystyle g(x) = ax - 1$．若 $\displaystyle f(x) + g(x) \geqslant 0$ 对 $\displaystyle x \in [1, +\infty)$ 恒成立，求 $\displaystyle a$ 的最小值．
 
 （4）【2020 全国 III，21(2)】
 设函数 $\displaystyle f(x) = x^3 - \frac{3}{4}x + c$．若 $\displaystyle f(x)$ 有一个绝对值不大于 $\displaystyle 1$ 的零点，证明：$\displaystyle f(x)$ 所有零点的绝对值都不大于 $\displaystyle 1$．
@@ -78,13 +44,6 @@
 （C）$\displaystyle (0, \frac{1}{a_3})$
 （D）$\displaystyle (0, \frac{2}{a_3})$
 
-（11）【2011 浙江，文 6】
-设 $\displaystyle a, b$ 为实数，则“$\displaystyle 0 < ab < 1$”是“$\displaystyle b < \frac{1}{a}$”的
-（A）充分而不必要条件
-（B）必要而不充分条件
-（C）充分必要条件
-（D）既不充分也不必要条件
-
 （12）【2011 浙江，7】
 若 $\displaystyle a, b$ 为实数，则“$\displaystyle 0 < ab < 1$”是“$\displaystyle a < \frac{1}{b}$ 或 $\displaystyle b > \frac{1}{a}$”的
 （A）充分而不必要条件
@@ -108,47 +67,15 @@ $\displaystyle a \wedge b = \begin{cases} a, a \leqslant b, \\ b, a > b, \end{ca
 （C）$\displaystyle [-3, \frac{3}{2})$
 （D）$\displaystyle (-3, \frac{3}{2})$
 
-（15）
-
-（16）【2010 安徽，文 15】
-若 $\displaystyle a > 0, b > 0, a+b=2$，则下列不等式对一切满足条件的 $\displaystyle a, b$ 恒成立的是\underline{\phantom{blank}}（写出所有正确命题的编号）。
+【2010 安徽，文 15】
+若 $\displaystyle a > 0, b > 0, a+b=2$，则下列不等式对一切满足条件的 $\displaystyle a, b$ 恒成立的是
 （1）$\displaystyle ab \leqslant 1$；
 （2）$\displaystyle \sqrt{a} + \sqrt{b} \leqslant \sqrt{2}$；
 （3）$\displaystyle a^2 + b^2 \geqslant 2$；
 （4）$\displaystyle a^3 + b^3 \geqslant 3$；
 （5）$\displaystyle \frac{1}{a} + \frac{1}{b} \geqslant 2$．
 
----
 
-### 第二部分：函数性质
-
-（17）【2013 大纲全国，4】
-已知函数 $\displaystyle f(x)$ 的定义域为 $\displaystyle (-1, 0)$，则函数 $\displaystyle f(2x+1)$ 的定义域为
-（A）$\displaystyle (-1, 1)$
-（B）$\displaystyle (-1, -\frac{1}{2})$
-（C）$\displaystyle (-1, 0)$
-（D）$\displaystyle (\frac{1}{2}, 1)$
-
-（18）【2014 全国 I，文 5 理 3】
-设 $\displaystyle f(x), g(x)$ 的定义域为 $\displaystyle \mathbb{R}$，$\displaystyle f(x)$ 是奇函数，$\displaystyle g(x)$ 是偶函数，则下列结论中正确的是
-（A）$\displaystyle f(x)g(x)$ 是偶函数
-（B）$\displaystyle |f(x)|g(x)$ 是奇函数
-（C）$\displaystyle f(x)|g(x)|$ 是奇函数
-（D）$\displaystyle |f(x)g(x)|$ 是奇函数
-
-（20）【2009 浙江，文 8】
-若函数 $\displaystyle f(x) = x^2 + \frac{a}{x} (a \in \mathbb{R})$，则下列结论正确的是
-（A）$\displaystyle \forall a \in \mathbb{R}, f(x)$ 在 $\displaystyle (0, +\infty)$ 上是增函数
-（B）$\displaystyle \forall a \in \mathbb{R}, f(x)$ 在 $\displaystyle (0, +\infty)$ 上是减函数
-（C）$\displaystyle \exists a \in \mathbb{R}, f(x)$ 是偶函数
-（D）$\displaystyle \exists a \in \mathbb{R}, f(x)$ 是奇函数
-
-（21）【2021 北京，3】
-设函数 $\displaystyle f(x)$ 的定义域为 $\displaystyle [0, 1]$，则“$\displaystyle f(x)$ 在区间 $\displaystyle [0, 1]$ 上单调递增”是“$\displaystyle f(x)$ 在区间 $\displaystyle [0, 1]$ 上的最大值为 $\displaystyle f(1)$”的
-（A）充分而不必要条件
-（B）必要而不充分条件
-（C）充分必要条件
-（D）既不充分也不必要条件
 
 
 
