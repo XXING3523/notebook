@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Kiwi Maru";
+  src: url("../font/KiwiMaru-Medium.ttf") format("truetype");
+  unicode-range: U+0000-00FF;
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ZiTiGuanJiaFangSongTi";
+  src: url("../font/ZiTiGuanJiaFangSongTi-2.ttf") format("truetype");
+  unicode-range: U+4E00-9FFF, U+3400-4DBF, U+20000-2A6DF;
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Consolas";
+  src: url("../font/Consolas.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "ZiTiGuanJiaFangSongTi","Kiwi Maru", serif;
+}
+
+:root {
+  --md-text-font: "ZiTiGuanJiaFangSongTi","Kiwi Maru", serif;
+  --md-code-font: "Consolas", serif;
+}
